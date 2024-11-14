@@ -6,7 +6,7 @@ export class BlackJack {
   private jugador: Carta[];
   private banca: Carta[];
 
-  constructor() {
+  constructor(nombre:string, apuestaMinima:number) {
     this.nombre = nombre;
     this.apuestaMinima = apuestaMinima;
     this.jugador = [];
@@ -50,7 +50,7 @@ export class BlackJack {
       console.log(`Suma jugador: ${this.obtenerSumaJugador()}`);
       console.log(`¿Desea pedir otra carta?`);
       const respuesta = prompt('S/N');
-      if (respuesta.toUpperCase() === 'S') {
+      if (respuesta !=null && respuesta.toUpperCase() === 'S') {
         this.pedirCartaJugador();
       } else {
         break;
