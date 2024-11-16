@@ -8,8 +8,12 @@ export class Casino {
     private min = 0;
     private max = 1000;
 
-    constructor() {
+    constructor(nombre: string) {
+        this.nombre = nombre;
         this.juegos = [];
+    }
+    public getNombre(): string {
+        return this.nombre
     }
     public agregarJuego(juego: Juego): void {
         this.juegos.push(juego);
@@ -19,8 +23,8 @@ export class Casino {
         this.jugadores.push(jugador);
     }
 
-    public iniciarJuego(juego:Juego){
-        
+    public iniciarJuego(juego: Juego) {
+
     }
 
     // public asignarIdJugador(jugadorAsig: Jugador) {
