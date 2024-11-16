@@ -2,12 +2,11 @@ import { Apuesta } from "./Apuesta";
 import { Juego } from "./Juego";
 
 export abstract class Tragamonedas extends Juego {
-    
-    tematica: string;
-    apuestaMinima: number;
 
-    constructor(nombre:string,tematica: string, apuestaMinima: number) {
-        super(nombre);
+    tematica: string;
+
+    constructor(tematica: string, apuestaMinima: number) {
+        super("Tragamonedas", apuestaMinima);
         this.tematica = tematica;
         this.apuestaMinima = apuestaMinima;
     }
