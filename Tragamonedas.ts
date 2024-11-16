@@ -2,13 +2,11 @@ import { Apuesta } from "./Apuesta";
 import { Juego } from "./Juego";
 
 export abstract class Tragamonedas extends Juego {
-
     tematica: string;
 
-    constructor(tematica: string, apuestaMinima: number) {
+    constructor(nombre: string, apuestaMinima: number, tematica: string, ) {
         super("Tragamonedas", apuestaMinima);
         this.tematica = tematica;
-        this.apuestaMinima = apuestaMinima;
     }
 
     //en base a la apuesta, veo que resultado obtiene
@@ -18,7 +16,7 @@ export abstract class Tragamonedas extends Juego {
         }
 
         //genero el resultado del juego
-        const resultadoJuego = this.generarResultado();
+        const resultadoJuego = this.mostrarResultado();
         const esGanador = Math.random() > 0.5; //probalidad de ganar
 
         //calculo la ganancia
@@ -32,7 +30,10 @@ export abstract class Tragamonedas extends Juego {
     }
 
     //metodo abstracto
-    protected abstract generarResultado(): string;
+    abstract iniciarJuego(): void;
+
+    //metodo abstracto
+    protected abstract mostrarResultado(): void;
 
 }
 

@@ -12,7 +12,15 @@ export class Casino {
         this.juegos = [];
     }
     public agregarJuego(juego: Juego): void {
-        this.juegos.push(juego)
+        this.juegos.push(juego);
+    }
+
+    public agregarJugador(jugador: Jugador): void {
+        this.jugadores.push(jugador);
+    }
+
+    public iniciarJuego(juego:Juego){
+        
     }
 
     // public asignarIdJugador(jugadorAsig: Jugador) {
