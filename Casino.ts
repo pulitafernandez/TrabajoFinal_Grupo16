@@ -5,15 +5,20 @@ export class Casino {
     private nombre: string;
     private juegos: Juego[];
     private jugadores: Jugador[];
-    private min = 0;
-    private max = 1000;
 
-    constructor(nombre: string) {
+
+    constructor(idCasino: number, nombre: string) {
+        this.idCasino = idCasino;
         this.nombre = nombre;
         this.juegos = [];
+        this.jugadores = []
+
     }
     public getNombre(): string {
-        return this.nombre
+        return this.nombre;
+    }
+    public getIdCasino(): number {
+        return this.idCasino;
     }
     public agregarJuego(juego: Juego): void {
         this.juegos.push(juego);

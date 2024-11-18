@@ -4,7 +4,7 @@ import { Juego } from "./Juego";
 export abstract class Tragamonedas extends Juego {
     tematica: string;
 
-    constructor(nombre: string, apuestaMinima: number, tematica: string, ) {
+    constructor(nombre: string, apuestaMinima: number, tematica: string,) {
         super("Tragamonedas", apuestaMinima);
         this.tematica = tematica;
     }
