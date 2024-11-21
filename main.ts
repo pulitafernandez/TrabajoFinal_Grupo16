@@ -8,4 +8,5 @@ let jugador1 = new Jugador()
 casino1.agregarJuego(juego1);
 casino1.agregarJugador(jugador1);
 jugador1.cargarCreditos(100)
+jugador1.consultarCreditos()
 juego1.iniciarJuego()

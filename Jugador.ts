@@ -24,6 +24,7 @@ export class Jugador {
         return console.log(`Su credito actual es,${this.creditos}`);
     }
     consultarCreditos(): number {
+
         return this.creditos;
     }
     agregarJugador(nuevoJugador: Jugador) {

@@ -1,7 +1,8 @@
 import { Apuesta } from "./Apuesta";
+import { Apostable } from "./interfaceApuesta";
 import { Juego } from "./Juego";
 
-export abstract class Tragamonedas extends Juego {
+export abstract class Tragamonedas extends Juego implements Apostable {
     tematica: string;
 
     constructor(nombre: string, apuestaMinima: number, tematica: string,) {
@@ -34,6 +35,7 @@ export abstract class Tragamonedas extends Juego {
 
     //metodo abstracto
     protected abstract mostrarResultado(): void;
+
 
 }
 

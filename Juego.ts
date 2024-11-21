@@ -1,3 +1,5 @@
+import { Apostable } from "./interfaceApuesta";
+
 export abstract class Juego {
     public nombre: string;
     public apuestaMinima: number;
@@ -7,4 +9,6 @@ export abstract class Juego {
         this.apuestaMinima = apuestaMinima;
 
     }
+
+
 }
