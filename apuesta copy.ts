@@ -16,4 +16,3 @@ export class Apuesta {
         return esGanador ? this.cantidadApuesta * 2 : 0;
     }
 }
-
