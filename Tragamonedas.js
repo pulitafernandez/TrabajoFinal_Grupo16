@@ -25,7 +25,7 @@ var Tragamonedas = /** @class */ (function (_super) {
         return _this;
     }
     //en base a la apuesta, veo que resultado obtiene
-    Tragamonedas.prototype.resultado = function (apuesta) {
+    Tragamonedas.prototype.resultado1 = function (apuesta) {
         if (!apuesta.esValida(this.apuestaMinima)) {
             return "La apuesta minima es ".concat(this.apuestaMinima, ". Apuesta invalida");
         }
@@ -40,6 +40,10 @@ var Tragamonedas = /** @class */ (function (_super) {
         else {
             return "Perdiste. El resultado es ".concat(resultadoJuego);
         }
+    };
+    Tragamonedas.prototype.resultado = function () {
+        // Código para calcular el resultado
+        return 'Resultado';
     };
     return Tragamonedas;
 }(Juego_1.Juego));

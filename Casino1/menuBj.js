@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuBlackJack = void 0;
 //import * as readline1 from "readline-sync";
 var readline = require("readline");
-var blackjack_copy_1 = require("./blackjack copy");
-var MenuCasino_1 = require("./MenuCasino");
+var blackjack_1 = require("./blackjack");
 var MenuBlackJack = /** @class */ (function () {
     function MenuBlackJack() {
         this.rl = readline.createInterface({
@@ -12,7 +11,9 @@ var MenuBlackJack = /** @class */ (function () {
             output: process.stdout
         });
         this.creditos = 0;
-        this.blackjack1 = new blackjack_copy_1.BlackJack("Pipe", 1000);
+        this.min = 0;
+        this.max = 1000;
+        this.blackjack1 = new blackjack_1.BlackJack("Pipe", 1000);
     }
     MenuBlackJack.prototype.menuPrin = function () {
         var _this = this;
@@ -42,8 +43,7 @@ var MenuBlackJack = /** @class */ (function () {
                     _this.menujuego();
                     break;
                 case '3':
-                    var menu5 = new MenuCasino_1.MenuCasino();
-                    menu5.mensajeBienvenida;
+                    _this.rl.close();
                     break;
                 case '4':
                     _this.menuPrin();
@@ -135,18 +135,21 @@ var MenuBlackJack = /** @class */ (function () {
             }
         });
     };
+    MenuBlackJack.prototype.datosCero = function () {
+        this.apuesta = 0;
+        this.blackjack1.limpiarArrays();
+    };
     MenuBlackJack.prototype.repartir = function () {
         this.blackjack1.limpiarArrays();
         console.log("---------------------------------------------------------------------- \n");
-        console.log("Inicia la Partida");
-        console.log("Tu apuesta es de ".concat(this.apuesta, "\n"));
+        console.log("Su apuesta es de ".concat(this.apuesta, "\n"));
         this.blackjack1.pedirCartaJugador();
         this.blackjack1.pedirCartaJugador();
         console.log("Tus Cartas Son:");
         this.blackjack1.mostrarCartaJug();
         console.log("\n");
         this.blackjack1.pedirCartaBanca();
-        console.log("Total jugador: ".concat(this.blackjack1.obtenerSumaJugador()));
+        console.log("Total jugador: ".concat(this.blackjack1.obtenerSumaJugador(), "\n"));
         console.log("---------------------------------------------------------------------- \n");
         console.log("Las Cartas de la Banca Son:");
         this.blackjack1.mostarCartaBanca();
@@ -227,11 +230,13 @@ var MenuBlackJack = /** @class */ (function () {
         this.sumaBanca = this.blackjack1.obtenerSumaBanca();
         this.sumaJugador = this.blackjack1.obtenerSumaJugador();
         while (this.sumaBanca < this.sumaJugador && this.sumaBanca < 21) {
+            console.log("---------------------------------------------------------------------- \n");
             console.log("La Banca pide otra carta");
             this.blackjack1.pedirCartaBanca();
             this.blackjack1.mostarCartaBanca();
             console.log("---------------------------------------------------------------------- \n");
             this.sumaBanca = this.blackjack1.obtenerSumaBanca();
+            console.log("---------------------------------------------------------------------- \n");
             console.log("Total banca: ".concat(this.sumaBanca));
             console.log("---------------------------------------------------------------------- \n");
         }
@@ -249,6 +254,7 @@ var MenuBlackJack = /** @class */ (function () {
                 this.menu1();
                 break;
             case this.sumaBanca > 21:
+                console.log("---------------------------------------------------------------------- \n");
                 console.log("La Banca pierde. Ganaste!");
                 console.log("".concat(this.creditos + (this.apuesta * 2), " \n"));
                 console.log("---------------------------------------------------------------------- \n");

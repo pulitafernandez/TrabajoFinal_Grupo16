@@ -1,8 +1,8 @@
-import { Apuesta } from "./Apuesta";
+import { Apuesta } from "./apuesta copy";
 import { Apostable } from "./interfaceApuesta";
 import { Juego } from "./Juego";
 
-export abstract class Tragamonedas extends Juego implements Apostable {
+export abstract class Tragamonedas extends Juego {
     tematica: string;
 
     constructor(nombre: string, apuestaMinima: number, tematica: string,) {
@@ -10,8 +10,9 @@ export abstract class Tragamonedas extends Juego implements Apostable {
         this.tematica = tematica;
     }
 
+
     //en base a la apuesta, veo que resultado obtiene
-    public resultado(apuesta: Apuesta): string {
+    public resultado1(apuesta: Apuesta): string {
         if (!apuesta.esValida(this.apuestaMinima)) {
             return `La apuesta minima es ${this.apuestaMinima}. Apuesta invalida`
         }
@@ -34,8 +35,11 @@ export abstract class Tragamonedas extends Juego implements Apostable {
     abstract iniciarJuego(): void;
 
     //metodo abstracto
-    protected abstract mostrarResultado(): void;
+    public abstract mostrarResultado(): void;
 
-
+    resultado(): string {
+        // Código para calcular el resultado
+        return 'Resultado';
+        }
 }
 

@@ -1,3 +1,5 @@
+import { Apuesta } from "./apuesta copy";
+
 export interface Apostable {
 
     iniciarJuego()
@@ -11,6 +13,7 @@ export interface Apostable {
     // }
     //metodo abstracto
     mostrarResultado(): void;
-    resultado(): void;
+    resultado(apuesta:Apuesta): string;
+    
 }
 

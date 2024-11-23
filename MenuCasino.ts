@@ -17,14 +17,14 @@ export class MenuCasino {
 
 
   //mensaje de bienvenida y avance con enter (el enter es el callback)
-  mensajeBienvenida() {
+   mensajeBienvenida() {
     // Falta dividir en metodos
-
     this.rl.question('Bienvenido al Casino Grupo 16, presione enter para continuar.\n', () => {
-      mostrarMenuPrincipal();
-    });
+ });
+  }
 
-    function mostrarMenuPrincipal() {
+    mostrarMenuPrincipal() {
+
       console.log('1 - Consultar Credito');
       console.log('2 - Cargar Credito');
       console.log('3 - Juegos');
@@ -58,82 +58,8 @@ export class MenuCasino {
             break;
           //MENU DE JUEGOS
           case '3':
-            console.log('1- Tragamonedas');
-            console.log('2- BlackJack');
-            this.rl.question('Seleccione una opción: ', (opcion: string) => {
-              switch (opcion) {
-                case '1':
-                  console.log('TRAGAMONEDAS');
-                  console.log('1- Frutas');
-                  console.log('2- Superheroes');
-                  this.rl.question('Seleccione una opción: ', (opcionTragamonedas: string) => {
-                    switch (opcionTragamonedas) {
-                      case '1':
-                        console.log('FRUTAS');
-                        console.log('1- Jugar');
-                        console.log('2- Reglas');
-                        console.log('3- Salir');
-                        this.rl.question('Seleccione una opción: ', (opcionFrutas: string) => {
-                          switch (opcionFrutas) {
-                            case '1':
-                              // Jugar Frutas
-                              break;
-                            case '2':
-                              // Reglas Frutas
-                              break;
-                            case '3':
-                              this.mostrarMenuPrincipal();
-                              break;
-                          }
-                        });
-                        break;
-                      case '2':
-                        console.log('SUPERHEROES');
-                        console.log('1- Jugar');
-                        console.log('2- Reglas');
-                        console.log('3- Salir');
-                        this.rl.question('Seleccione una opción: ', (opcionSuperheroes: string) => {
-                          switch (opcionSuperheroes) {
-                            case '1':
-                              // Jugar Superheroes
-                              break;
-                            case '2':
-                              // Reglas Superheroes
-                              break;
-                            case '3':
-                              this.mostrarMenuPrincipal();
-                              break;
-                          }
-                        });
-                        break;
-                    }
-                  });
-                  break;
-                case '2':
-                  console.log('BLACKJACK');
-                  console.log('1- Jugar');
-                  console.log('2- Reglas');
-                  console.log('3- Salir');
-                  this.rl.question('Seleccione una opción: ', (opcionBlackjack: string) => {
-                    switch (opcionBlackjack) {
-                      case '1':
-                        // Jugar Blackjack
-                        console.log("caso 1")
-                        const juego1 = new MenuBlackJack();
-                        juego1.menuPrin();
-                        break;
-                      case '2':
-                        // Reglas Blackjack
-                        break;
-                      case '3':
-                        this.mostrarMenuPrincipal();
-                        break;
-                    }
-                  });
-                  break;
-              }
-            });
-            break;
+            this.menuElejirJuegos();
+    break;
           case '4':
             console.log('Gracias por visitar Casino Grupo 16');
             this.rl.close();
@@ -144,5 +70,115 @@ export class MenuCasino {
         }
       });
     }
+  
+
+
+  menuElejirJuegos(){ 
+    console.log('1- Tragamonedas');
+    console.log('2- BlackJack');
+    console.log('3- Volver');
+    this.rl.question('Seleccione una opción: ', (opcion: string) => {
+      switch (opcion) {
+        case '1':
+         this.menutragamonedas(); 
+          break;
+        case '2':
+          this.MenuBlackJack124();
+      break;
+      case '3':
+        this.mostrarMenuPrincipal();
+    break;
+      }
+    });
+  }
+
+
+  menutragamonedas(){ 
+    console.log('TRAGAMONEDAS');
+    console.log('1- Frutas');
+    console.log('2- Superheroes');
+    this.rl.question('Seleccione una opción: ', (opcionTragamonedas: string) => {
+      switch (opcionTragamonedas) {
+        case '1':
+          this.menutragamonedasFrutas()
+        break;
+        case '2':
+        this.menuSuperheroe1();            
+        break;
+      }
+    });
+  }
+
+
+  menutragamonedasFrutas(){ 
+    console.log('FRUTAS');
+    console.log('1- Jugar');
+    console.log('2- Reglas');
+    console.log('3- Salir');
+    this.rl.question('Seleccione una opción: ', (opcionFrutas: string) => {
+      switch (opcionFrutas) {
+        case '1':
+          // Jugar Frutas
+          break;
+        case '2':
+          // Reglas Frutas
+          break;
+        case '3':
+         // this.mostrarMenuPrincipal();
+          break;
+      }
+    });
+  }
+
+  menuSuperheroe1(){
+    console.log('SUPERHEROES');
+    console.log('1- Jugar');
+    console.log('2- Reglas');
+    console.log('3- Salir');
+    this.rl.question('Seleccione una opción: ', (opcionSuperheroes: string) => {
+      switch (opcionSuperheroes) {
+        case '1':
+          // Jugar Superheroes
+          break;
+        case '2':
+          // Reglas Superheroes
+          break;
+        case '3':
+        this.mostrarMenuPrincipal();
+        break;
+      }
+    });
+  }
+
+
+  MenuBlackJack124(){  
+    console.log('BLACKJACK');
+    console.log('1- Jugar');
+    console.log('2- Reglas');
+    console.log('3- Salir');
+    this.rl.question('Seleccione una opción: ', (opcionBlackjack: string) => {
+      switch (opcionBlackjack) {
+        case '1':
+          // Jugar Blackjack
+          console.log("caso 1")
+          const juego1 = new MenuBlackJack();
+          juego1.menuPrin();
+          break;
+        case '2':
+          // Reglas Blackjack
+          break;
+        case '3':
+          //this.mostrarMenuPrincipal();
+          break;
+      }  
+    });
   }
 }
+
+
+
+
+
+
+
+

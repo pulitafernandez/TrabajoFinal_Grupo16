@@ -43,7 +43,7 @@ export class TragamonedasAvanzado extends Tragamonedas {
     }
 
     //implemento el metodo generarResultado
-    protected mostrarResultado(): void {
+     mostrarResultado(): void {
         console.log("Resultado de los carretes:");
         for (let i = 0; i < this.carretes.length; i++) {
             console.log(this.carretes[i].join(" | "));

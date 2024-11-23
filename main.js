@@ -1,13 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Casino_1 = require("./Casino");
-var Jugador_1 = require("./Jugador");
-var TragamonedasAvanzado_1 = require("./TragamonedasAvanzado");
-var casino1 = new Casino_1.Casino(1, "Casino Olavarria");
-var juego1 = new TragamonedasAvanzado_1.TragamonedasAvanzado(1);
-var jugador1 = new Jugador_1.Jugador();
+var MenuCasino_1 = require("./MenuCasino");
+/*
+let casino1 = new Casino(1, "Casino Olavarria")
+let juego1 = new TragamonedasAvanzado(1)
+let jugador1 = new Jugador()
 casino1.agregarJuego(juego1);
 casino1.agregarJugador(jugador1);
-jugador1.cargarCreditos(100);
-jugador1.consultarCreditos();
-juego1.iniciarJuego();
+jugador1.cargarCreditos(100)
+jugador1.consultarCreditos()
+juego1.iniciarJuego()
+*/
+var juego1 = new MenuCasino_1.MenuCasino();
+juego1.mostrarMenuPrincipal();
