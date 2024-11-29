@@ -50,7 +50,7 @@ export class MenuBlackJack {
           break;
         case '3':
           const menu5 = new MenuCasino();
-          menu5.mensajeBienvenida
+          menu5.menuElejirJuegos();
           break;
         case '4':
           this.menuPrin();

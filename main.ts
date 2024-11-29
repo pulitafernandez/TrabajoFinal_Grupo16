@@ -14,5 +14,5 @@ jugador1.consultarCreditos()
 juego1.iniciarJuego()
 */
 
-const juego1 = new MenuCasino();
-juego1.mostrarMenuPrincipal();
+const juego11 = new MenuCasino();
+juego11.mostrarMenuPrincipal();

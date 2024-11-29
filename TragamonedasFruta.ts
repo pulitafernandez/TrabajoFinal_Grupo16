@@ -3,8 +3,9 @@ import { Tragamonedas } from "./Tragamonedas";
 export class TragamonedasFruta extends Tragamonedas {
     private carretes: string[][]; 
     private simbolos: string[]; 
-
-    constructor(nombre:string, apuestaMinima: number,  tematica:string) {
+    
+    constructor( apuestaMinima: number) {
+    //constructor(nombre:string, apuestaMinima: number,  tematica:string) {
         super("TragamonedasClasico", apuestaMinima, "Frutas");
         this.simbolos = ["🍎", "🍊", "🍒", "🍇", "🍉"];  // Frutas representadas por emojis
         this.carretes = [

@@ -43,7 +43,7 @@ var MenuBlackJack = /** @class */ (function () {
                     break;
                 case '3':
                     var menu5 = new MenuCasino_1.MenuCasino();
-                    menu5.mensajeBienvenida;
+                    menu5.menuElejirJuegos();
                     break;
                 case '4':
                     _this.menuPrin();

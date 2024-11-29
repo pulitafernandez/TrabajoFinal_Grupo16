@@ -4,6 +4,7 @@ exports.MenuCasino = void 0;
 //import { Jugador } from './Jugador';
 var readline = require("readline");
 var menuBj_1 = require("./menuBj");
+var menuTragamonedas_1 = require("./menuTragamonedas");
 var MenuCasino = /** @class */ (function () {
     function MenuCasino() {
         //utilizar modulo readline de node para crear una interfaz de consola
@@ -14,14 +15,11 @@ var MenuCasino = /** @class */ (function () {
             output: process.stdout
         });
     }
-    //mensaje de bienvenida y avance con enter (el enter es el callback)
-    MenuCasino.prototype.mensajeBienvenida = function () {
-        // Falta dividir en metodos
-        this.rl.question('Bienvenido al Casino Grupo 16, presione enter para continuar.\n', function () {
-        });
-    };
     MenuCasino.prototype.mostrarMenuPrincipal = function () {
         var _this = this;
+        console.log('*********************************');
+        console.log('* Bienvenido al Casino Grupo 16 *');
+        console.log('*********************************' + '\n');
         console.log('1 - Consultar Credito');
         console.log('2 - Cargar Credito');
         console.log('3 - Juegos');
@@ -77,11 +75,14 @@ var MenuCasino = /** @class */ (function () {
                     _this.menutragamonedas();
                     break;
                 case '2':
-                    _this.MenuBlackJack124();
+                    _this.menuBlackJack124();
                     break;
                 case '3':
                     _this.mostrarMenuPrincipal();
                     break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuElejirJuegos();
             }
         });
     };
@@ -90,6 +91,7 @@ var MenuCasino = /** @class */ (function () {
         console.log('TRAGAMONEDAS');
         console.log('1- Frutas');
         console.log('2- Superheroes');
+        console.log('3- Volver');
         this.rl.question('Seleccione una opción: ', function (opcionTragamonedas) {
             switch (opcionTragamonedas) {
                 case '1':
@@ -98,25 +100,36 @@ var MenuCasino = /** @class */ (function () {
                 case '2':
                     _this.menuSuperheroe1();
                     break;
+                case '3':
+                    _this.menuElejirJuegos();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menutragamonedas();
             }
         });
     };
     MenuCasino.prototype.menutragamonedasFrutas = function () {
+        var _this = this;
         console.log('FRUTAS');
         console.log('1- Jugar');
         console.log('2- Reglas');
-        console.log('3- Salir');
+        console.log('3- Volver');
         this.rl.question('Seleccione una opción: ', function (opcionFrutas) {
             switch (opcionFrutas) {
                 case '1':
-                    // Jugar Frutas
+                    var menuTragamonedasSuper1 = new menuTragamonedas_1.MenuTragamonedas();
+                    menuTragamonedasSuper1.menuTragamonedasFruta();
                     break;
                 case '2':
                     // Reglas Frutas
                     break;
                 case '3':
-                    // this.mostrarMenuPrincipal();
+                    _this.menutragamonedas();
                     break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menutragamonedasFrutas();
             }
         });
     };
@@ -125,26 +138,31 @@ var MenuCasino = /** @class */ (function () {
         console.log('SUPERHEROES');
         console.log('1- Jugar');
         console.log('2- Reglas');
-        console.log('3- Salir');
+        console.log('3- Volver');
         this.rl.question('Seleccione una opción: ', function (opcionSuperheroes) {
             switch (opcionSuperheroes) {
                 case '1':
-                    // Jugar Superheroes
+                    var menuTragamonedasSuper2 = new menuTragamonedas_1.MenuTragamonedas();
+                    menuTragamonedasSuper2.menuTragamonedasSuper();
                     break;
                 case '2':
                     // Reglas Superheroes
                     break;
                 case '3':
-                    _this.mostrarMenuPrincipal();
+                    _this.menutragamonedas();
                     break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuSuperheroe1();
             }
         });
     };
-    MenuCasino.prototype.MenuBlackJack124 = function () {
+    MenuCasino.prototype.menuBlackJack124 = function () {
+        var _this = this;
         console.log('BLACKJACK');
         console.log('1- Jugar');
         console.log('2- Reglas');
-        console.log('3- Salir');
+        console.log('3- Volver');
         this.rl.question('Seleccione una opción: ', function (opcionBlackjack) {
             switch (opcionBlackjack) {
                 case '1':
@@ -157,8 +175,11 @@ var MenuCasino = /** @class */ (function () {
                     // Reglas Blackjack
                     break;
                 case '3':
-                    //this.mostrarMenuPrincipal();
+                    _this.menuElejirJuegos();
                     break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuBlackJack124();
             }
         });
     };

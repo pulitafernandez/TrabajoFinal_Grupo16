@@ -13,9 +13,7 @@ export class TragamonedasAvanzado extends Tragamonedas {
         this.carretesCount = 5;   // Supongamos que hay 5 carretes
         this.filasCount = 3;      // Y cada carrete tiene 3 filas
         this.carretes = Array.from({ length: this.carretesCount }, () => []); // Inicializamos el array de carretes
-
     }
-
     // Implementación de iniciarJuego para TragamonedasAvanzado
     iniciarJuego(): void {
         console.log("Girando los carretes de Tragamonedas Avanzado...");
@@ -27,7 +25,6 @@ export class TragamonedasAvanzado extends Tragamonedas {
             for (let j = 0; j < this.filasCount; j++) {  // Cada carrete tiene 3 filas
                 const simboloAleatorio = this.simbolos[Math.floor(Math.random() * this.simbolos.length)];
                 this.carretes[i].push(simboloAleatorio);
-
             }
 
             // Mostrar los resultados de los carretes
@@ -65,5 +62,4 @@ export class TragamonedasAvanzado extends Tragamonedas {
 
         return false; // Si no hay combinación ganadora
     }
-
 }

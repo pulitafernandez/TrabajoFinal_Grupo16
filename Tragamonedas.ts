@@ -10,7 +10,6 @@ export abstract class Tragamonedas extends Juego {
         this.tematica = tematica;
     }
 
-
     //en base a la apuesta, veo que resultado obtiene
     public resultado1(apuesta: Apuesta): string {
         if (!apuesta.esValida(this.apuestaMinima)) {

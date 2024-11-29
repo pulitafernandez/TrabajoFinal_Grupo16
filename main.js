@@ -11,5 +11,5 @@ jugador1.cargarCreditos(100)
 jugador1.consultarCreditos()
 juego1.iniciarJuego()
 */
-var juego1 = new MenuCasino_1.MenuCasino();
-juego1.mostrarMenuPrincipal();
+var juego11 = new MenuCasino_1.MenuCasino();
+juego11.mostrarMenuPrincipal();
