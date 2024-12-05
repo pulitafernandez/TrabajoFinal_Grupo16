@@ -30,7 +30,7 @@ export class MenuBlackJack implements Apostable{
   menu5 = new MenuCasino(); 
   blackjack1 = new BlackJack(1000,this.jugadorPipe);
 
-  
+  //blackjack1 = new BlackJack(1000,this.menu5.get);
 
   public menu1() {
  
@@ -45,7 +45,8 @@ export class MenuBlackJack implements Apostable{
     //this.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
-          this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + 200);
+          this.cargarCredito();
+          //this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + 200);
           this.menu1();
           break;
         case '2':
@@ -66,7 +67,7 @@ export class MenuBlackJack implements Apostable{
 
   public menujuego() {
     console.log(`---------------------------------------------------------------------- \n`);
-    console.log(`Amiguito ${this.menu5.getnombreMcasino()} \n`);
+    console.log(`Jugador: ${this.menu5.getnombreMcasino()} \n`);
     console.log(`Tus Creditos son de:${this.menu5.getcreditosMcasino()}\n`);
     console.log(`1. Ingresar Creditos Al Juego \n`);
     console.log(`2. Apostar y Jugar \n`);
@@ -77,7 +78,8 @@ export class MenuBlackJack implements Apostable{
    // this.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
-          this.menu5.setcreditosMcasino(200);
+          //this.menu5.setcreditosMcasino(200);
+          this.cargarCredito();
           this.menujuego();
           break;
         case '2':
@@ -99,7 +101,7 @@ export class MenuBlackJack implements Apostable{
 
   public menujuego1() {
     console.log(`---------------------------------------------------------------------- \n`);
-    console.log(`Amiguito ${this.menu5.getnombreMcasino()}\n`);
+    console.log(`Jugador: ${this.menu5.getnombreMcasino()}\n`);
     console.log(`Tus Créditos son de: ${this.menu5.getcreditosMcasino()}\n`);
     console.log(`1. Pedir una Carta\n`);
     console.log(`2. Quedarse\n`);
@@ -288,10 +290,14 @@ export class MenuBlackJack implements Apostable{
   mostrarResultado(): void{}
 
 
-  cargarCredito(): void{}
+  cargarCredito(): void{
+    this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + 200);
+  }
 
 
-  actualizarSaldo(): void{}
+  actualizarSaldo(): void{
+    console.log(`Tus Creditos son de:${this.menu5.getcreditosMcasino()}\n`);
+  }
 
 
   cobrarPremio(): void{}

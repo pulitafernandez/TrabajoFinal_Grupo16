@@ -26,9 +26,7 @@ export class Jugador {
         console.log(`Su crédito actual es: $${this.creditos}`);
     }
 
-
   
-
     public setCreditos(nuevoCreditos: number): void {
         this.creditos = nuevoCreditos;
       }

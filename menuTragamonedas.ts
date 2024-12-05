@@ -6,7 +6,7 @@ import { TragamonedasAvanzado } from "./TragamonedasAvanzado";
 import { MenuCasino } from "./MenuCasino";
 import { TragamonedasFruta } from "./TragamonedasFruta";
 
-export class MenuTragamonedas  {
+export class MenuTragamonedas   {
     
    super1 = new TragamonedasAvanzado(1000);
    Fruta1 = new TragamonedasFruta(1000);

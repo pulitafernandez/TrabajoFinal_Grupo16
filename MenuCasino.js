@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuCasino = void 0;
+//import * as readline from "readline-sync";
 var readline = require("readline");
 var Jugador_1 = require("./Jugador");
 var Casino_1 = require("./Casino");
-var MenuBj_1 = require("./MenuBj");
+var menuBj_1 = require("./menuBj");
 var MenuTragamonedas_1 = require("./MenuTragamonedas");
 var CartaAlta_1 = require("./CartaAlta");
 var MenuCasino = /** @class */ (function () {
@@ -262,7 +263,7 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionBlackjack) {
             switch (opcionBlackjack) {
                 case '1':
-                    var juego1 = new MenuBj_1.MenuBlackJack();
+                    var juego1 = new menuBj_1.MenuBlackJack();
                     juego1.menu1();
                     break;
                 case '2':

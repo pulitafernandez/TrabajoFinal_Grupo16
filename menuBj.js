@@ -1,8 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuBlackJack = void 0;
-//import * as readline1 from "readline-sync";
-//import * as readline from 'readline';
 var Blackjack_1 = require("./Blackjack");
 var MenuCasino_1 = require("./MenuCasino");
 var Jugador_1 = require("./Jugador");
@@ -20,6 +18,7 @@ var MenuBlackJack = /** @class */ (function () {
         this.menu5 = new MenuCasino_1.MenuCasino();
         this.blackjack1 = new Blackjack_1.BlackJack(1000, this.jugadorPipe);
     }
+    //blackjack1 = new BlackJack(1000,this.menu5.get);
     MenuBlackJack.prototype.menu1 = function () {
         var _this = this;
         console.log("---------------------------------------------------------------------- \n");
@@ -33,7 +32,8 @@ var MenuBlackJack = /** @class */ (function () {
             //this.rl.question('Ingrese su opción: ', (opcion1) => {
             switch (opcion1) {
                 case '1':
-                    _this.menu5.setcreditosMcasino(_this.menu5.getcreditosMcasino() + 200);
+                    _this.cargarCredito();
+                    //this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + 200);
                     _this.menu1();
                     break;
                 case '2':
@@ -51,7 +51,7 @@ var MenuBlackJack = /** @class */ (function () {
     MenuBlackJack.prototype.menujuego = function () {
         var _this = this;
         console.log("---------------------------------------------------------------------- \n");
-        console.log("Amiguito ".concat(this.menu5.getnombreMcasino(), " \n"));
+        console.log("Jugador: ".concat(this.menu5.getnombreMcasino(), " \n"));
         console.log("Tus Creditos son de:".concat(this.menu5.getcreditosMcasino(), "\n"));
         console.log("1. Ingresar Creditos Al Juego \n");
         console.log("2. Apostar y Jugar \n");
@@ -62,7 +62,8 @@ var MenuBlackJack = /** @class */ (function () {
             // this.rl.question('Ingrese su opción: ', (opcion1) => {
             switch (opcion1) {
                 case '1':
-                    _this.menu5.setcreditosMcasino(200);
+                    //this.menu5.setcreditosMcasino(200);
+                    _this.cargarCredito();
                     _this.menujuego();
                     break;
                 case '2':
@@ -84,7 +85,7 @@ var MenuBlackJack = /** @class */ (function () {
     MenuBlackJack.prototype.menujuego1 = function () {
         var _this = this;
         console.log("---------------------------------------------------------------------- \n");
-        console.log("Amiguito ".concat(this.menu5.getnombreMcasino(), "\n"));
+        console.log("Jugador: ".concat(this.menu5.getnombreMcasino(), "\n"));
         console.log("Tus Cr\u00E9ditos son de: ".concat(this.menu5.getcreditosMcasino(), "\n"));
         console.log("1. Pedir una Carta\n");
         console.log("2. Quedarse\n");
@@ -262,7 +263,9 @@ var MenuBlackJack = /** @class */ (function () {
         }
     };
     MenuBlackJack.prototype.mostrarResultado = function () { };
-    MenuBlackJack.prototype.cargarCredito = function () { };
+    MenuBlackJack.prototype.cargarCredito = function () {
+        this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + 200);
+    };
     MenuBlackJack.prototype.actualizarSaldo = function () { };
     MenuBlackJack.prototype.cobrarPremio = function () { };
     return MenuBlackJack;

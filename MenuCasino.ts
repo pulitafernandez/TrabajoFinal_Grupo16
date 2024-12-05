@@ -2,7 +2,7 @@
 import * as readline from 'readline';
 import { Jugador } from './Jugador';
 import { Casino } from './Casino';
-import { MenuBlackJack } from './MenuBj';
+import { MenuBlackJack } from './menuBj';
 import { MenuTragamonedas } from './MenuTragamonedas';
 import { CartaAlta } from './CartaAlta';
 
@@ -23,12 +23,7 @@ export class MenuCasino {
     this.jugador = new Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
   }
 
-  /*
-  rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-*/
+  
 
 private static creditosMcasino:number;
 private static nombreMcasino:string;
