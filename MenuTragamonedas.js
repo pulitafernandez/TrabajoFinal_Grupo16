@@ -1,12 +1,35 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuTragamonedas = void 0;
-var readline = require("readline");
-var TragamonedasAvanzado_1 = require("./TragamonedasAvanzado");
-var MenuCasino_1 = require("./MenuCasino");
-var TragamonedasFruta_1 = require("./TragamonedasFruta");
-var MenuTragamonedas = /** @class */ (function () {
-    function MenuTragamonedas() {
+const readline = __importStar(require("readline"));
+const TragamonedasAvanzado_1 = require("./TragamonedasAvanzado");
+const MenuCasino_1 = require("./MenuCasino");
+const TragamonedasFruta_1 = require("./TragamonedasFruta");
+class MenuTragamonedas {
+    constructor() {
         this.super1 = new TragamonedasAvanzado_1.TragamonedasAvanzado(1000);
         this.Fruta1 = new TragamonedasFruta_1.TragamonedasFruta(1000);
         this.menuCasino1 = new MenuCasino_1.MenuCasino();
@@ -16,8 +39,7 @@ var MenuTragamonedas = /** @class */ (function () {
             output: process.stdout
         });
     }
-    MenuTragamonedas.prototype.menuTragamonedasSuper = function () {
-        var _this = this;
+    menuTragamonedasSuper() {
         console.log('*********************');
         console.log('* Tragamonedas Super*');
         console.log('*********************' + '\n');
@@ -25,11 +47,11 @@ var MenuTragamonedas = /** @class */ (function () {
         console.log('2- Ingresar más Creditos');
         console.log('3- Cobrar');
         console.log('4- Volver');
-        this.rl.question('Seleccione una opción: ', function (opcion) {
+        this.rl.question('Seleccione una opción: ', (opcion) => {
             switch (opcion) {
                 case '1':
-                    _this.super1.iniciarJuego();
-                    _this.menuTragamonedasSuper();
+                    this.super1.iniciarJuego();
+                    this.menuTragamonedasSuper();
                     break;
                 case '2':
                     //funcion agregar creditos();
@@ -38,16 +60,15 @@ var MenuTragamonedas = /** @class */ (function () {
                     //funcion de cobro();
                     break;
                 case '4':
-                    _this.menuCasino1.menuElejirJuegos();
+                    this.menuCasino1.menuElejirJuegos();
                     break;
                 default:
                     console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menuCasino1.menuElejirJuegos();
+                    this.menuCasino1.menuElejirJuegos();
             }
         });
-    };
-    MenuTragamonedas.prototype.menuTragamonedasFruta = function () {
-        var _this = this;
+    }
+    menuTragamonedasFruta() {
         console.log('***********************');
         console.log('* Tragamonedas Frutas *');
         console.log('***********************' + '\n');
@@ -55,11 +76,11 @@ var MenuTragamonedas = /** @class */ (function () {
         console.log('2- Ingresar más Creditos');
         console.log('3- Cobrar');
         console.log('4- Volver');
-        this.rl.question('Seleccione una opción: ', function (opcion) {
+        this.rl.question('Seleccione una opción: ', (opcion) => {
             switch (opcion) {
                 case '1':
-                    _this.Fruta1.iniciarJuego();
-                    _this.menuTragamonedasFruta();
+                    this.Fruta1.iniciarJuego();
+                    this.menuTragamonedasFruta();
                     break;
                 case '2':
                     //funcion agregar creditos();
@@ -68,14 +89,13 @@ var MenuTragamonedas = /** @class */ (function () {
                     //funcion de cobro();
                     break;
                 case '4':
-                    _this.menuCasino1.menuElejirJuegos();
+                    this.menuCasino1.menuElejirJuegos();
                     break;
                 default:
                     console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menuCasino1.menuElejirJuegos();
+                    this.menuCasino1.menuElejirJuegos();
             }
         });
-    };
-    return MenuTragamonedas;
-}());
+    }
+}
 exports.MenuTragamonedas = MenuTragamonedas;

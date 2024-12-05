@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Juego = void 0;
-var Juego = /** @class */ (function () {
-    function Juego(nombre) {
+class Juego {
+    constructor(nombre) {
         this.nombre = nombre;
     }
-    Juego.prototype.iniciarJuego = function () { };
+    iniciarJuego() { }
     // public esValida(apuestaMinima: number): boolean {
     //     return this.cantidadApuesta >= apuestaMinima;
     // }
@@ -14,10 +14,9 @@ var Juego = /** @class */ (function () {
     //     return esGanador ? this.cantidadApuesta * 2 : 0;
     // }
     //metodo abstracto
-    Juego.prototype.mostrarResultado = function () { };
-    Juego.prototype.resultado = function () {
+    mostrarResultado() { }
+    resultado() {
         return ("");
-    };
-    return Juego;
-}());
+    }
+}
 exports.Juego = Juego;
