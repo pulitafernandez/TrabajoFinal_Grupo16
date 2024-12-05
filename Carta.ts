@@ -38,12 +38,16 @@ export class Carta {
     }
   }
 
+  getNombre(): string {
+    return `${this.valor} de ${this.palo}`;
+  }
+
   static valoresCarta: string[] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
   static palos: string[] = ['Trebol', 'Pica', 'Diamante', 'Corazon'];
 
   static obtenerCartaAleatoria(): Carta {
-  const valor = Carta.valoresCarta[Math.floor(Math.random() * Carta.valoresCarta.length)];
-  const palo = Carta.palos[Math.floor(Math.random() * Carta.palos.length)];
-  return new Carta(valor, palo);
+    const valor = Carta.valoresCarta[Math.floor(Math.random() * Carta.valoresCarta.length)];
+    const palo = Carta.palos[Math.floor(Math.random() * Carta.palos.length)];
+    return new Carta(valor, palo);
   }
 }

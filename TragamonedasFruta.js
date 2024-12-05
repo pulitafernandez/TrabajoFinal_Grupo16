@@ -28,49 +28,28 @@ var TragamonedasFruta = /** @class */ (function (_super) {
         ];
         return _this;
     }
+    // Implementación de iniciarJuego para TragamonedasFrutas
     TragamonedasFruta.prototype.iniciarJuego = function () {
         console.log("Girando los carretes de Tragamonedas Frutas...");
         // Llenar cada carrete con una combinación aleatoria de frutas
         for (var i = 0; i < this.carretes.length; i++) {
             this.carretes[i] = [];
-            for (var j = 0; j < 3; j++) {
-                // Supongamos que cada carrete tiene 3 símbolos
+            for (var j = 0; j < 3; j++) { // Supongamos que cada carrete tiene 3 símbolos
                 var simboloAleatorio = this.simbolos[Math.floor(Math.random() * this.simbolos.length)];
                 this.carretes[i].push(simboloAleatorio);
-            }
-            // Verificar si hay una combinación ganadora
-            if (this.evaluarGanador()) {
-                console.log("¡Has ganado!");
-                break; // Detener el bucle si se produce una combinación ganadora
             }
         }
         // Mostrar los resultados de los carretes
         this.mostrarResultado();
-    };
-    /*
-        // Implementación de iniciarJuego para TragamonedasFrutas
-        iniciarJuego(): void {
-            console.log("Girando los carretes de Tragamonedas Frutas...");
-            // Llenar cada carrete con una combinación aleatoria de frutas
-            for (let i = 0; i < this.carretes.length; i++) {
-                this.carretes[i] = [];
-                for (let j = 0; j < 3; j++) {  // Supongamos que cada carrete tiene 3 símbolos
-                const simboloAleatorio = this.simbolos[Math.floor(Math.random() * this.simbolos.length)];
-                this.carretes[i].push(simboloAleatorio);
-                }
-            }
-    
-            // Mostrar los resultados de los carretes
-            this.mostrarResultado();
-                // Evaluar si el jugador ha ganado
-            const resultadoGanador = this.evaluarGanador();
-            if (resultadoGanador) {
+        // Evaluar si el jugador ha ganado
+        var resultadoGanador = this.evaluarGanador();
+        if (resultadoGanador) {
             console.log("¡Has ganado!");
-            } else {
-            console.log("No has ganado esta vez. ¡Sigue intentándolo!");
-            }
         }
-    */
+        else {
+            console.log("No has ganado esta vez. ¡Sigue intentándolo!");
+        }
+    };
     //implemento el metodo generarResultado
     TragamonedasFruta.prototype.mostrarResultado = function () {
         console.log("Resultado de los carretes:");

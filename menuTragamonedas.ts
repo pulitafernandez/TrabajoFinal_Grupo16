@@ -1,5 +1,5 @@
-import { Apuesta } from "./apuesta copy";
-import { Apostable } from "./interfaceApuesta";
+import { Apuesta } from "./Apuesta";
+import { Apostable } from "./InterfaceApuesta";
 import { Juego } from "./Juego";
 import * as readline from 'readline';
 import { TragamonedasAvanzado } from "./TragamonedasAvanzado";

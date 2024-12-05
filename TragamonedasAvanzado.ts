@@ -1,6 +1,5 @@
 import { Tragamonedas } from "./Tragamonedas";
 
-
 export class TragamonedasAvanzado extends Tragamonedas {
 
     private carretes: string[][];    // Los carretes, cada uno puede tener varios símbolos
@@ -8,10 +7,7 @@ export class TragamonedasAvanzado extends Tragamonedas {
     private carretesCount: number;   // Cantidad de carretes
     private filasCount: number;
 
-    
- 
     constructor(apuestaMinima: number) {
-      
         super("Tragamonedas Avanzado", apuestaMinima, "Superheroes");
         this.simbolos = ["🦸‍♂️", "🦸‍♀️", "💥", "⚡", "🛡️", "🦸‍♂️🦹‍♂️"]; // Ejemplo de superhéroes, poderes y comodines
         this.carretesCount = 5;   // Supongamos que hay 5 carretes

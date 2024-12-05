@@ -1,23 +1,30 @@
-import { Apuesta } from "./apuesta copy";
-import { Apostable } from "./interfaceApuesta";
+import { Apuesta } from "./Apuesta";
+import { Apostable } from "./InterfaceApuesta";
 
 
-export abstract class Juego implements Apostable {
+export abstract class Juego {
     public nombre: string;
-    public apuestaMinima: number;
 
-    constructor(nombre: string, apuestaMinima: number) {
+    constructor(nombre: string) {
         this.nombre = nombre;
-        this.apuestaMinima = apuestaMinima;
+
 
     }
-    iniciarJuego(){}
-   
-    mostrarResultado(): void{}
-   
-    resultado(): string{
-      
-    return("");
+    iniciarJuego() { }
+    // public esValida(apuestaMinima: number): boolean {
+    //     return this.cantidadApuesta >= apuestaMinima;
+    // }
+
+    // //calculo la ganancia del jugador
+    // calcularGanancia(esGanador: boolean): number {
+    //     return esGanador ? this.cantidadApuesta * 2 : 0;
+    // }
+    //metodo abstracto
+    mostrarResultado(): void { }
+
+    resultado(): string {
+
+        return ("");
     }
-   
+
 }

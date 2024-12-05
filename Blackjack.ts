@@ -1,26 +1,28 @@
+import { Jugador } from "./Jugador";
+import { Apuesta } from "./Apuesta";
+import { Carta } from "./Carta";
+import { Apostable } from "./InterfaceApuesta";
+import { Juego } from "./Juego";
 
-import { Apuesta } from "./apuesta";
-import { Carta } from "./carta";
+export class BlackJack extends Juego implements Apostable {
 
-export class BlackJack {
-  private nombre: string;
-  private apuestaMinima: number;
   private jugador: Carta[];
   private banca: Carta[];
 
 
-  constructor(nombre: string, apuestaMinima: number) {
-    this.nombre = nombre;
-    this.apuestaMinima = apuestaMinima;
-    this.jugador = [];
-    this.banca = [];
+
+  constructor(apuestaMinima: number, jugador: Jugador) {
+    super("BlackJack");
+
+    this.jugador = []
+    this.banca = []
   }
 
   limpiarArrays(): void {
     this.jugador.splice(0);
     this.banca.splice(0);
   }
-  
+
 
   public mostrarCartaJug() {
     console.log(this.jugador.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
@@ -54,4 +56,18 @@ export class BlackJack {
     this.banca.push(Carta.obtenerCartaAleatoria());
   }
 
+  mostrarResultado(): void { }
+
+
+
+  cargarCredito(): void { }
+
+
+  actualizarSaldo(): void { }
+
+
+  cobrarPremio(): void { }
+
+
+  realizarApuesta(): void { }
 }

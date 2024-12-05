@@ -1,63 +1,59 @@
-
-//import * as readline1 from "readline-sync";
+import * as readline1 from "readline-sync";
 import * as readline from 'readline';
-import { BlackJack } from './blackjack copy';
+import { BlackJack } from './Blackjack';
 import { MenuCasino } from './MenuCasino';
+import { Apostable } from './InterfaceApuesta';
 import { Jugador } from './Jugador';
-export class MenuBlackJack {
 
+export class MenuBlackJack implements Apostable{
+
+ 
+  //private creditos: number = 0;
+
+ // private nombre2!: string;
+  private apuesta!: number;
+  private sumaJugador!: number;
+  private sumaBanca!: number;
+ // private rl: readline.Interface;
+
+
+  constructor() { }
+/*
   rl = readline.createInterface({
 
     input: process.stdin,
     output: process.stdout
   });
+*/
 
-  private creditos: number = 0;
+  jugadorPipe = new Jugador("Pipe",1000);
+  menu5 = new MenuCasino(); 
+  blackjack1 = new BlackJack(1000,this.jugadorPipe);
 
-  private nombre2: string;
-  private apuesta: number;
-  private sumaJugador: number;
-  private sumaBanca: number;
-  private jugador1:Jugador;
-  constructor() { }
-
- blackjack1 = new BlackJack();
-
-  public menuPrin() {
-    console.log(`---------------------------------------------------------------------- \n`);
-    this.rl.question('Ingrese Nombre Jugador: ', (nombre1) => {
-      this.nombre2 = nombre1;
-      this.menu1();
-    });
-  }
-
-
+  
 
   public menu1() {
-   
+ 
     console.log(`---------------------------------------------------------------------- \n`);
-    console.log(`Bien Venido Amiguito ${this.nombre2} Al BlackJack\n`);
-    console.log(`Tus Creditos son de:${this.creditos}\n`);
+    console.log(`Bienvenido ${this.menu5.getnombreMcasino()} Al BlackJack\n`);
+    console.log(`Tus Creditos son de:${this.menu5.getcreditosMcasino()}\n`);
     console.log(`1. Ingresar Creditos Al Juego\n`);
     console.log(`2. Iniciar Partida\n`);
     console.log(`3. Salir\n`);
-    console.log(`4. Volver al menu Principal\n`);
     console.log(`---------------------------------------------------------------------- \n`);
-    this.rl.question('Ingrese su opción: ', (opcion1) => {
+    this.menu5.rl.question('Ingrese su opción: ', (opcion1) => {
+    //this.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
-          this.creditos = this.creditos + 100;
+          this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + 200);
           this.menu1();
           break;
         case '2':
           this.menujuego();
           break;
         case '3':
-          const menu5 = new MenuCasino();
-          menu5.menuElejirJuegos();
-          break;
-        case '4':
-          this.menuPrin();
+          this.menu5.menuElejirJuegos();
+         
           break;
         default:
           console.log('Opción inválida');
@@ -70,27 +66,29 @@ export class MenuBlackJack {
 
   public menujuego() {
     console.log(`---------------------------------------------------------------------- \n`);
-    console.log(`Amiguito ${this.nombre2} \n`);
-    console.log(`Tus Creditos son de:${this.creditos}\n`);
+    console.log(`Amiguito ${this.menu5.getnombreMcasino()} \n`);
+    console.log(`Tus Creditos son de:${this.menu5.getcreditosMcasino()}\n`);
     console.log(`1. Ingresar Creditos Al Juego \n`);
     console.log(`2. Apostar y Jugar \n`);
     console.log(`3. Volver al menu Principal \n`);
     console.log(`4. Salir \n`);
     console.log(`---------------------------------------------------------------------- \n`);
-    this.rl.question('Ingrese su opción: ', (opcion1) => {
+    this.menu5.rl.question('Ingrese su opción: ', (opcion1) => {
+   // this.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
-          this.creditos = this.creditos + 100;
+          this.menu5.setcreditosMcasino(200);
           this.menujuego();
           break;
         case '2':
           this.realizarApuesta();
           break;
         case '3':
-          this.menuPrin();
+          this.menu1();
           break;
         case '4':
-          this.rl.close();
+          this.menu5.rl.close();
+         // this.rl.close();
           break;
         default:
           console.log('Opción inválida');
@@ -101,12 +99,13 @@ export class MenuBlackJack {
 
   public menujuego1() {
     console.log(`---------------------------------------------------------------------- \n`);
-    console.log(`Amiguito ${this.nombre2}\n`);
-    console.log(`Tus Créditos son de: ${this.creditos}\n`);
+    console.log(`Amiguito ${this.menu5.getnombreMcasino()}\n`);
+    console.log(`Tus Créditos son de: ${this.menu5.getcreditosMcasino()}\n`);
     console.log(`1. Pedir una Carta\n`);
     console.log(`2. Quedarse\n`);
     console.log(`---------------------------------------------------------------------- \n`);
-    this.rl.question('Ingrese su opción: ', (opcion1) => {
+    this.menu5.rl.question('Ingrese su opción: ', (opcion1) => {
+    //this.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
           this.blackjack1.pedirCartaJugador();
@@ -128,15 +127,16 @@ export class MenuBlackJack {
   public realizarApuesta() {
     this.apuesta = 0;
     console.log(`---------------------------------------------------------------------- \n`);
-    this.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 10 y la maxima es de 100): ', (apuesta) => {
+    this.menu5.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 10 y la maxima es de 100): ', (apuesta) => {
+   // this.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 10 y la maxima es de 100): ', (apuesta) => {
       const apuestaNumero = parseInt(apuesta);
       if (apuestaNumero >= 10 && apuestaNumero <= 100) {
-        if (this.creditos >= apuestaNumero) {
+        if (this.menu5.getcreditosMcasino() >= apuestaNumero) {
           this.apuesta = apuestaNumero;
-          this.creditos = this.creditos - this.apuesta;
+          this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() - this.apuesta);
           console.log(`---------------------------------------------------------------------- \n`);
           console.log(`Su apuesta es de ${this.apuesta}`);
-          console.log(`Tus Creditos son : ${this.creditos}`);
+          console.log(`Tus Creditos son : ${this.menu5.getcreditosMcasino()}`);
           console.log(`---------------------------------------------------------------------- \n`);
           this.repartir();
         }
@@ -188,7 +188,8 @@ export class MenuBlackJack {
         console.log(`---------------------------------------------------------------------- \n`);
         console.log(`chequearBj igual que 21 empatas`);
         console.log(`Ambos tiene Black Jack Empate`);
-        this.creditos = this.creditos + this.apuesta;
+        this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + this.apuesta);
+       // this.creditos = this.creditos + this.apuesta;
         this.menujuego();
       } else {
         console.log(`---------------------------------------------------------------------- \n`);
@@ -197,7 +198,8 @@ export class MenuBlackJack {
   no consiguio empatar el BlackJack la banca Pierde.
   Ganaste ${(this.apuesta * 2.5)}`);
         console.log(`---------------------------------------------------------------------- \n`);
-        this.creditos = this.creditos + (this.apuesta * 2.5);
+        this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + (this.apuesta * 2.5));
+        //this.creditos = this.creditos + (this.apuesta * 2.5);
         this.menujuego();
       }
     }
@@ -230,7 +232,8 @@ export class MenuBlackJack {
       console.log(`chequear jugada igual a que 21 ganas`);
       console.log(`¡Felicidades! Obtuviste 21 puntos.`);
       console.log(`---------------------------------------------------------------------- \n`);
-      this.creditos = this.creditos + (this.apuesta * 2);
+      this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + (this.apuesta * 2));
+      //this.creditos = this.creditos + (this.apuesta * 2);
       this.menujuego1();
     }
   }
@@ -260,7 +263,8 @@ export class MenuBlackJack {
         console.log(` \n`);
         console.log(`Empate. Nadie gana`);
         console.log(`---------------------------------------------------------------------- \n`);
-        this.creditos = this.creditos + this.apuesta;
+        this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + this.apuesta);
+       // this.creditos = this.creditos + this.apuesta;
         this.menu1();
         break;
       case this.sumaBanca > this.sumaJugador && this.sumaBanca <= 21:
@@ -270,12 +274,26 @@ export class MenuBlackJack {
         break;
       case this.sumaBanca > 21:
         console.log(`La Banca pierde. Ganaste!`);
-        console.log(`${this.creditos + (this.apuesta * 2)} \n`);
+        console.log(`${this.menu5.getcreditosMcasino() + this.apuesta*2} + \n `);
+        //console.log(`${this.creditos + (this.apuesta * 2)} \n`);
         console.log(`---------------------------------------------------------------------- \n`);
-        this.creditos = this.creditos + (this.apuesta * 2);
+        this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + (this.apuesta*2));
+       // this.creditos = this.creditos + (this.apuesta * 2);
         this.menu1();
         break;
     }
   }
+
+  
+  mostrarResultado(): void{}
+
+
+  cargarCredito(): void{}
+
+
+  actualizarSaldo(): void{}
+
+
+  cobrarPremio(): void{}
 
 }

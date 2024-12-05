@@ -34,6 +34,9 @@ var Carta = /** @class */ (function () {
                 throw new Error("Valor de carta no reconocido: ".concat(this.valor));
         }
     };
+    Carta.prototype.getNombre = function () {
+        return "".concat(this.valor, " de ").concat(this.palo);
+    };
     Carta.obtenerCartaAleatoria = function () {
         var valor = Carta.valoresCarta[Math.floor(Math.random() * Carta.valoresCarta.length)];
         var palo = Carta.palos[Math.floor(Math.random() * Carta.palos.length)];

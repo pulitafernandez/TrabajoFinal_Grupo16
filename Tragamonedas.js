@@ -20,27 +20,10 @@ var Juego_1 = require("./Juego");
 var Tragamonedas = /** @class */ (function (_super) {
     __extends(Tragamonedas, _super);
     function Tragamonedas(nombre, apuestaMinima, tematica) {
-        var _this = _super.call(this, "Tragamonedas", apuestaMinima) || this;
+        var _this = _super.call(this, "Tragamonedas") || this;
         _this.tematica = tematica;
         return _this;
     }
-    //en base a la apuesta, veo que resultado obtiene
-    Tragamonedas.prototype.resultado1 = function (apuesta) {
-        if (!apuesta.esValida(this.apuestaMinima)) {
-            return "La apuesta minima es ".concat(this.apuestaMinima, ". Apuesta invalida");
-        }
-        //genero el resultado del juego
-        var resultadoJuego = this.mostrarResultado();
-        var esGanador = Math.random() > 0.5; //probalidad de ganar
-        //calculo la ganancia
-        var ganancia = apuesta.calcularGanancia(esGanador);
-        if (ganancia > 0) {
-            return "Ganaste!! El resultado es ".concat(resultadoJuego, ". Ganaste $ ").concat(ganancia);
-        }
-        else {
-            return "Perdiste. El resultado es ".concat(resultadoJuego);
-        }
-    };
     Tragamonedas.prototype.resultado = function () {
         // Código para calcular el resultado
         return 'Resultado';
