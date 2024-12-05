@@ -1,4 +1,3 @@
-import { Apuesta } from "./Apuesta";
 import { Apostable } from "./InterfaceApuesta";
 
 

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuCasino = void 0;
+//import * as readline from "readline-sync";
 var readline = require("readline");
 var Jugador_1 = require("./Jugador");
 var Casino_1 = require("./Casino");

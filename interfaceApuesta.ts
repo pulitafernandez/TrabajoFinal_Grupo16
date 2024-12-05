@@ -1,4 +1,4 @@
-import { Apuesta } from "./Apuesta";
+
 
 export interface Apostable {
 

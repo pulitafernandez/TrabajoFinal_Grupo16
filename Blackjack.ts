@@ -1,5 +1,4 @@
 import { Jugador } from "./Jugador";
-import { Apuesta } from "./Apuesta";
 import { Carta } from "./Carta";
 import { Apostable } from "./InterfaceApuesta";
 import { Juego } from "./Juego";

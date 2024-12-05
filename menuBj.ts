@@ -1,4 +1,4 @@
-import * as readline1 from "readline-sync";
+//import * as readline1 from "readline-sync";
 import * as readline from 'readline';
 import { BlackJack } from './Blackjack';
 import { MenuCasino } from './MenuCasino';
