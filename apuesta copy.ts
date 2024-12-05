@@ -1,5 +1,6 @@
 
 export class Apuesta {
+    
     cantidadApuesta: number;
 
     constructor(cantidadApuesta: number) {

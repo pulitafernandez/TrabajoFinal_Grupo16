@@ -3,6 +3,7 @@
 import * as readline from 'readline';
 import { BlackJack } from './blackjack copy';
 import { MenuCasino } from './MenuCasino';
+import { Jugador } from './Jugador';
 export class MenuBlackJack {
 
   rl = readline.createInterface({
@@ -17,10 +18,10 @@ export class MenuBlackJack {
   private apuesta: number;
   private sumaJugador: number;
   private sumaBanca: number;
+  private jugador1:Jugador;
   constructor() { }
 
-
-  blackjack1 = new BlackJack("Pipe", 1000);
+ blackjack1 = new BlackJack();
 
   public menuPrin() {
     console.log(`---------------------------------------------------------------------- \n`);
@@ -30,7 +31,10 @@ export class MenuBlackJack {
     });
   }
 
+
+
   public menu1() {
+   
     console.log(`---------------------------------------------------------------------- \n`);
     console.log(`Bien Venido Amiguito ${this.nombre2} Al BlackJack\n`);
     console.log(`Tus Creditos son de:${this.creditos}\n`);

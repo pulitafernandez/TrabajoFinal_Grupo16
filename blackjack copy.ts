@@ -1,38 +1,37 @@
 
 import { Apuesta } from "./apuesta copy";
 import { Carta } from "./carta copy";
+import { Jugador } from "./Jugador";
 
 export class BlackJack {
-  private nombre: string;
-  private apuestaMinima: number;
-  private jugador: Carta[];
-  private banca: Carta[];
+ 
+  private jugadorCarta: Carta[];
+  private bancaCarta: Carta[];
+ 
 
-
-  constructor(nombre: string, apuestaMinima: number) {
-    this.nombre = nombre;
-    this.apuestaMinima = apuestaMinima;
-    this.jugador = [];
-    this.banca = [];
+  constructor() {
+    
+    this.jugadorCarta = [];
+    this.bancaCarta = [];
   }
 
   limpiarArrays(): void {
-    this.jugador.splice(0);
-    this.banca.splice(0);
+    this.jugadorCarta.splice(0);
+    this.bancaCarta.splice(0);
   }
 
 
   public mostrarCartaJug() {
-    console.log(this.jugador.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
+    console.log(this.jugadorCarta.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
   }
 
   public mostarCartaBanca() {
-    console.log(this.banca.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
+    console.log(this.bancaCarta.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
   }
 
   obtenerSumaJugador(): number {
     let suma = 0;
-    for (const carta of this.jugador) {
+    for (const carta of this.jugadorCarta) {
       suma += carta.getValorNumerico();
     }
     return suma;
@@ -40,18 +39,18 @@ export class BlackJack {
 
   obtenerSumaBanca(): number {
     let suma = 0;
-    for (const carta of this.banca) {
+    for (const carta of this.bancaCarta) {
       suma += carta.getValorNumerico();
     }
     return suma;
   }
 
   pedirCartaJugador() {
-    this.jugador.push(Carta.obtenerCartaAleatoria());
+    this.jugadorCarta.push(Carta.obtenerCartaAleatoria());
   }
 
   pedirCartaBanca() {
-    this.banca.push(Carta.obtenerCartaAleatoria());
+    this.bancaCarta.push(Carta.obtenerCartaAleatoria());
   }
 
 }

@@ -1,43 +1,38 @@
+
+
 export class Jugador {
     private idJugador: number;
     private nombre: string;
     private creditos: number;
-    private jugador: Jugador[] = [];
-    private min = 0;
-    private max = 1000;
+   
 
-    contructor(idJugador: number, nombre: string, creditos: number) {
-        this.idJugador = idJugador;
+    constructor (nombre: string, creditos: number) {
         this.nombre = nombre;
-        this.creditos = creditos;
-
+        this.creditos = creditos; 
     }
+
     //getters y setters
     getIdJugador(): number {
         return this.idJugador
     }
-    getNombre(): string {
-        return this.nombre
-    }
-    cargarCreditos(monto: number): void {
-        this.creditos = this.creditos + monto;
-        return console.log(`Su credito actual es,${this.creditos}`);
-    }
-    consultarCreditos(): number {
 
-        return this.creditos;
-    }
-    agregarJugador(nuevoJugador: Jugador) {
-        if (nuevoJugador instanceof Jugador) {
-            nuevoJugador.setIdJugador(Math.floor(Math.random() * (this.max - this.min + 1)) + this.min)
-            this.jugador.push(nuevoJugador)
-        }
-
-    }
     setIdJugador(nuevoidJugador: number): void {
         this.idJugador = nuevoidJugador;
     }
 
+    getNombre(): string {
+        return this.nombre
+    }
 
+    setNombre(nuevoNombre: string):void {
+        this.nombre = nuevoNombre;
+    }
+
+    getCreditos(): number {
+        return this.creditos
+    }
+
+    setCreditos(nuevoCreditos: number):void {
+        this.creditos = nuevoCreditos;
+    }
 }
-//

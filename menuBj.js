@@ -12,7 +12,7 @@ var MenuBlackJack = /** @class */ (function () {
             output: process.stdout
         });
         this.creditos = 0;
-        this.blackjack1 = new blackjack_copy_1.BlackJack("Pipe", 1000);
+        this.blackjack1 = new blackjack_copy_1.BlackJack();
     }
     MenuBlackJack.prototype.menuPrin = function () {
         var _this = this;

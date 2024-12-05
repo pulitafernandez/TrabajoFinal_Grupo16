@@ -1,9 +1,11 @@
-//import { Jugador } from './Jugador';
+import { Jugador } from './Jugador';
 import * as readline from 'readline';
 import { BlackJack } from "./blackjack copy";
 import { MenuBlackJack } from "./menuBj";
 import { MenuTragamonedas} from "./menuTragamonedas";
+import { Casino} from './Casino';
 export class MenuCasino {
+
   constructor() { }
  
   //utilizar modulo readline de node para crear una interfaz de consola
@@ -15,9 +17,64 @@ export class MenuCasino {
     output: process.stdout
   });
 
+  private casino1 = new Casino(1);
+  private indexAuxJug:number;
+  private nomJugadorAux:string;
+
  
- 
+
+  menuLogin() {
+    console.log('*******************');
+    console.log('* Ingrese jugador *');
+    console.log('*******************' + '\n');
+    console.log('1 - Ingresar Usuario');
+    console.log('2 - Salir');
+
+    //pide una opcion al usuario, y la ejecuta en el switch 
+    // la llamada a metodo estan desactivadas para probar comportamiento sin depender de las clases
+    this.rl.question('Ingrese una opción: ', (opcion: string) => {
+      switch (opcion) {
+        case '1':
+          this.rl.question('Ingrese Nombre Jugador: '+ '\n', (nombreJug) => {
+            this.rl.question('Ingrese Creditos: ', (creditosJug) => {
+              this.nomJugadorAux = nombreJug;
+              const jugador1 = new Jugador(nombreJug, parseInt(creditosJug));
+              this.casino1.agregarJugador(jugador1);
+              this.elegirJugador(this.nomJugadorAux);
+              this.mostrarMenuPrincipal();
+            });
+          });                 
+          break;
+        case '2':
+          console.log('Gracias por visitar Casino Grupo 16');
+          this.rl.close();
+          break;
+        default:
+          console.log('Opción inválida. Por favor, intente de nuevo.');
+          this.mostrarMenuPrincipal();
+      }
+    });
+  }
+   
+  public elegirJugador(nombreJugador:string) {
+    let jugador33  = nombreJugador;
+    const jugador2: Jugador[] = this.casino1.getJugadores();
+    const index1 = jugador2.findIndex((jug) => jug.getNombre().toLowerCase() === jugador33.toLowerCase());
+      if (index1 !== -1) {
+        this.indexAuxJug = index1;
+        console.log(`Jugador seleccionado: ${jugador2[this.indexAuxJug].getNombre()}`+ '\n');
+        this.mostrarMenuPrincipal();
+      } else {
+        console.log("Jugador no encontrado");
+        this. menuLogin();
+      }
+  }
+
   mostrarMenuPrincipal() {
+   const casino2: Jugador[] = this.casino1.getJugadores();
+   
+    console.log(`Esta Jugando: ${casino2[this.indexAuxJug].getNombre()}`);
+   
     console.log('*********************************');
     console.log('* Bienvenido al Casino Grupo 16 *');
     console.log('*********************************' + '\n');
@@ -186,4 +243,7 @@ export class MenuCasino {
       }
     });
   }
+
+
+
 }

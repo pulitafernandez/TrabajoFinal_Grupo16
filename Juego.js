@@ -7,14 +7,6 @@ var Juego = /** @class */ (function () {
         this.apuestaMinima = apuestaMinima;
     }
     Juego.prototype.iniciarJuego = function () { };
-    // public esValida(apuestaMinima: number): boolean {
-    //     return this.cantidadApuesta >= apuestaMinima;
-    // }
-    // //calculo la ganancia del jugador
-    // calcularGanancia(esGanador: boolean): number {
-    //     return esGanador ? this.cantidadApuesta * 2 : 0;
-    // }
-    //metodo abstracto
     Juego.prototype.mostrarResultado = function () { };
     Juego.prototype.resultado = function () {
         return ("");

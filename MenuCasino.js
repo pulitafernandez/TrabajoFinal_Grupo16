@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuCasino = void 0;
-//import { Jugador } from './Jugador';
+var Jugador_1 = require("./Jugador");
 var readline = require("readline");
 var menuBj_1 = require("./menuBj");
 var menuTragamonedas_1 = require("./menuTragamonedas");
+var Casino_1 = require("./Casino");
 var MenuCasino = /** @class */ (function () {
     function MenuCasino() {
         //utilizar modulo readline de node para crear una interfaz de consola
@@ -14,9 +15,58 @@ var MenuCasino = /** @class */ (function () {
             input: process.stdin,
             output: process.stdout
         });
+        this.casino1 = new Casino_1.Casino(1);
     }
+    MenuCasino.prototype.menuLogin = function () {
+        var _this = this;
+        console.log('*******************');
+        console.log('* Ingrese jugador *');
+        console.log('*******************' + '\n');
+        console.log('1 - Ingresar Usuario');
+        console.log('2 - Salir');
+        //pide una opcion al usuario, y la ejecuta en el switch 
+        // la llamada a metodo estan desactivadas para probar comportamiento sin depender de las clases
+        this.rl.question('Ingrese una opción: ', function (opcion) {
+            switch (opcion) {
+                case '1':
+                    _this.rl.question('Ingrese Nombre Jugador: ' + '\n', function (nombreJug) {
+                        _this.rl.question('Ingrese Creditos: ', function (creditosJug) {
+                            _this.nomJugadorAux = nombreJug;
+                            var jugador1 = new Jugador_1.Jugador(nombreJug, parseInt(creditosJug));
+                            _this.casino1.agregarJugador(jugador1);
+                            _this.elegirJugador(_this.nomJugadorAux);
+                            _this.mostrarMenuPrincipal();
+                        });
+                    });
+                    break;
+                case '2':
+                    console.log('Gracias por visitar Casino Grupo 16');
+                    _this.rl.close();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.mostrarMenuPrincipal();
+            }
+        });
+    };
+    MenuCasino.prototype.elegirJugador = function (nombreJugador) {
+        var jugador33 = nombreJugador;
+        var jugador2 = this.casino1.getJugadores();
+        var index1 = jugador2.findIndex(function (jug) { return jug.getNombre().toLowerCase() === jugador33.toLowerCase(); });
+        if (index1 !== -1) {
+            this.indexAuxJug = index1;
+            console.log("Jugador seleccionado: ".concat(jugador2[this.indexAuxJug].getNombre()) + '\n');
+            this.mostrarMenuPrincipal();
+        }
+        else {
+            console.log("Jugador no encontrado");
+            this.menuLogin();
+        }
+    };
     MenuCasino.prototype.mostrarMenuPrincipal = function () {
         var _this = this;
+        var casino2 = this.casino1.getJugadores();
+        console.log("Esta Jugando: ".concat(casino2[this.indexAuxJug].getNombre()));
         console.log('*********************************');
         console.log('* Bienvenido al Casino Grupo 16 *');
         console.log('*********************************' + '\n');
