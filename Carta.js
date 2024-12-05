@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Carta = void 0;
-var Carta = /** @class */ (function () {
-    function Carta(valor, palo) {
+class Carta {
+    constructor(valor, palo) {
         this.valor = valor;
         this.palo = palo;
     }
-    Carta.prototype.getValor = function () {
+    getValor() {
         return this.valor;
-    };
-    Carta.prototype.getPalo = function () {
+    }
+    getPalo() {
         return this.palo;
-    };
-    Carta.prototype.getValorNumerico = function () {
+    }
+    getValorNumerico() {
         switch (this.valor) {
             case '2':
             case '3':
@@ -31,8 +31,9 @@ var Carta = /** @class */ (function () {
             case 'A':
                 return 11; // por defecto, el AS vale 11
             default:
-                throw new Error("Valor de carta no reconocido: ".concat(this.valor));
+                throw new Error(`Valor de carta no reconocido: ${this.valor}`);
         }
+<<<<<<< HEAD:Carta.js
     };
     Carta.prototype.getNombre = function () {
         return "".concat(this.valor, " de ").concat(this.palo);
@@ -40,10 +41,15 @@ var Carta = /** @class */ (function () {
     Carta.obtenerCartaAleatoria = function () {
         var valor = Carta.valoresCarta[Math.floor(Math.random() * Carta.valoresCarta.length)];
         var palo = Carta.palos[Math.floor(Math.random() * Carta.palos.length)];
+=======
+    }
+    static obtenerCartaAleatoria() {
+        const valor = Carta.valoresCarta[Math.floor(Math.random() * Carta.valoresCarta.length)];
+        const palo = Carta.palos[Math.floor(Math.random() * Carta.palos.length)];
+>>>>>>> 3294f854ae0429e88b05db7fdc4ed5e20f04a302:Casino1/carta.js
         return new Carta(valor, palo);
-    };
-    Carta.valoresCarta = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-    Carta.palos = ['Trebol', 'Pica', 'Diamante', 'Corazon'];
-    return Carta;
-}());
+    }
+}
 exports.Carta = Carta;
+Carta.valoresCarta = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+Carta.palos = ['Trebol', 'Pica', 'Diamante', 'Corazon'];
