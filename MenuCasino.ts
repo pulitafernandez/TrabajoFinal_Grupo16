@@ -253,7 +253,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
   }
 
   mostrarReglasFrutas() {
-    fs.readFile('./Reglas-TragamonedasFrutas.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+    fs.readFile('./Reglas/Reglas-TragamonedasFrutas.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
         if (err) {
             console.error('Error al leer las reglas:', err);
             return;
@@ -292,7 +292,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
   }
 
   mostrarReglasSuperheroes() {
-    fs.readFile('./Reglas-TragamonedasSuperheroes.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+    fs.readFile('./Reglas/Reglas-TragamonedasSuperheroes.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
         if (err) {
             console.error('Error al leer las reglas:', err);
             return;
@@ -333,7 +333,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
   // Método para mostrar las reglas del Blackjack desde un archivo
 private mostrarReglasBlackjack() {
   const fs = require('fs');
-  fs.readFile('./Reglas-Blackjack.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+  fs.readFile('./Reglas/Reglas-Blackjack.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
     if (err) {
           console.error('Error al leer las reglas:', err);
           return;
@@ -376,7 +376,7 @@ private mostrarReglasBlackjack() {
 
   // Método para mostrar las reglas
   mostrarReglas(): void {
-    fs.readFile('./Reglas-CartaAlta.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+    fs.readFile('./Reglas/Reglas-CartaAlta.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
       if (err) {
           console.error('Error al leer las reglas:', err);
           return;

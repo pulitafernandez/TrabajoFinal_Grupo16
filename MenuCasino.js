@@ -228,7 +228,7 @@ class MenuCasino {
                     menuTragamonedasSuper1.menuTragamonedasFruta();
                     break;
                 case '2':
-                    // Reglas Frutas
+                    this.mostrarReglasFrutas();
                     break;
                 case '3':
                     this.menutragamonedas();
@@ -237,6 +237,16 @@ class MenuCasino {
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     this.menutragamonedasFrutas();
             }
+        });
+    }
+    mostrarReglasFrutas() {
+        fs.readFile('./Reglas/Reglas-TragamonedasFrutas.txt', 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error al leer las reglas:', err);
+                return;
+            }
+            console.log('\n' + data);
+            this.menutragamonedasFrutas(); // Regresa al menú de Tragamonedas Frutas después de mostrar las reglas
         });
     }
     menuSuperheroe1() {
@@ -255,7 +265,7 @@ class MenuCasino {
                     menuTragamonedasSuper2.menuTragamonedasSuper();
                     break;
                 case '2':
-                    // Reglas Superheroes
+                    this.mostrarReglasSuperheroes();
                     break;
                 case '3':
                     this.menutragamonedas();
@@ -266,9 +276,19 @@ class MenuCasino {
             }
         });
     }
+    mostrarReglasSuperheroes() {
+        fs.readFile('./Reglas-TragamonedasSuperheroes.txt', 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error al leer las reglas:', err);
+                return;
+            }
+            console.log('\n' + data);
+            this.menuSuperheroe1(); // Regresa al menú de Tragamonedas Superhéroes después de mostrar las reglas
+        });
+    }
     menuBlackJack124() {
-        console.log(`****************************`);
-        console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
+        console.log(`\n****************************`);
+        console.log(`* Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino} *`);
         console.log(`****************************` + '\n');
         console.log('BLACKJACK');
         console.log('1- Jugar');
@@ -337,7 +357,7 @@ class MenuCasino {
     }
     // Método para mostrar las reglas
     mostrarReglas() {
-        fs.readFile('./Reglas-CartaAlta.txt', 'utf8', (err, data) => {
+        fs.readFile('./Reglas/Reglas-CartaAlta.txt', 'utf8', (err, data) => {
             if (err) {
                 console.error('Error al leer las reglas:', err);
                 return;
