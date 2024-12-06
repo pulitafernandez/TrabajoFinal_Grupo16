@@ -175,6 +175,7 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionFrutas) {
             switch (opcionFrutas) {
                 case '1':
+                    _this.rl.close();
                     var menuTragamonedasSuper1 = new MenuTragamonedas_1.MenuTragamonedas();
                     menuTragamonedasSuper1.menuTragamonedasFruta();
                     break;
@@ -204,6 +205,7 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionSuperheroes) {
             switch (opcionSuperheroes) {
                 case '1':
+                    _this.rl.close();
                     var menuTragamonedasSuper2 = new MenuTragamonedas_1.MenuTragamonedas();
                     menuTragamonedasSuper2.menuTragamonedasSuper();
                     break;
@@ -214,6 +216,7 @@ var MenuCasino = /** @class */ (function () {
                     _this.menutragamonedas();
                     break;
                 default:
+                    _this.rl.close();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menuSuperheroe();
             }
@@ -233,6 +236,7 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionBlackjack) {
             switch (opcionBlackjack) {
                 case '1':
+                    _this.rl.close();
                     var juego1 = new menuBj_1.MenuBlackJack();
                     juego1.menu1();
                     break;
@@ -264,6 +268,7 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcion) {
             switch (opcion) {
                 case '1':
+                    _this.rl.close();
                     var cartaAlta = new CartaAlta_1.CartaAlta(_this.jugador);
                     cartaAlta.menu1();
                     break;

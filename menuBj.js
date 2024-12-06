@@ -56,7 +56,6 @@ var MenuBlackJack = /** @class */ (function () {
                     break;
                 case '4':
                     _this.menu5.rl.close();
-                    // this.rl.close();
                     break;
                 default:
                     console.log('Opción inválida');

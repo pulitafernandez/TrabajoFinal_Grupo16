@@ -61,7 +61,6 @@ export class MenuBlackJack implements Apostable{
           break;
         case '4':
           this.menu5.rl.close();
-         // this.rl.close();
           break;
         default:
           console.log('Opción inválida');

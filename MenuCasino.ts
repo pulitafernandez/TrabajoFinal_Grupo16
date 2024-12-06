@@ -132,7 +132,7 @@ export class MenuCasino {
         case '1':
           this.menutragamonedas();
           break;
-        case '2':
+        case '2': 
           this.menuBlackJack();
           break;
         case '3':
@@ -194,6 +194,7 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionFrutas: string) => {
       switch (opcionFrutas) {
         case '1':
+          this.rl.close();
           const menuTragamonedasSuper1 = new MenuTragamonedas();
           menuTragamonedasSuper1.menuTragamonedasFruta();
           break;
@@ -222,6 +223,7 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionSuperheroes: string) => {
       switch (opcionSuperheroes) {
         case '1':
+          this.rl.close();
           const menuTragamonedasSuper2 = new MenuTragamonedas();
           menuTragamonedasSuper2.menuTragamonedasSuper();
           break;
@@ -232,14 +234,13 @@ export class MenuCasino {
           this.menutragamonedas();
           break;
         default:
+          this.rl.close();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menuSuperheroe();
       }
     });
   }
-
-  
-  
+    
 
   //Menu Black Jack
   private menuBlackJack() {
@@ -254,6 +255,7 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionBlackjack: string) => {
       switch (opcionBlackjack) {
         case '1':
+          this.rl.close();
           const juego1 = new MenuBlackJack();
           juego1.menu1();
           break;
@@ -285,6 +287,7 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
+          this.rl.close();
         const cartaAlta = new CartaAlta(this.jugador);
         cartaAlta.menu1();
         break;
