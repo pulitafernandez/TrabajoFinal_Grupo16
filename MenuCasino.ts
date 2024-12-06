@@ -60,6 +60,7 @@ export class MenuCasino {
     this.rl.question('Ingrese una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
+          console.clear();
           // Solicitar el nombre del usuario
           this.rl.question('Cargar su nombre de usuario: ', (nombre: string) => {
             // Solicitar el saldo inicial
@@ -69,18 +70,19 @@ export class MenuCasino {
               this.jugador = jugador1; // Reemplazar el jugador por defecto
               MenuCasino.nombreMcasino = nombre;
               MenuCasino.creditosMcasino = parseInt(creditos);
-
               console.log(`\nBienvenido, ¡${nombre}! Su saldo inicial es de ${creditos} créditos.`);
               this.mostrarMenuPrincipal();
             });
           });
           break;
         case '2':
+          console.clear();
           console.log('Gracias por visitar Casino Grupo 16');
           this.rl.close();
           break;
 
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menuLogin();
       }
@@ -99,18 +101,23 @@ export class MenuCasino {
     this.rl.question('Ingrese una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
+          console.clear();
           this.consultarSaldo();
           break;
         case '2':
+          console.clear();
           this.cargarCreditos();
           break;
         case '3':
+          console.clear();
           this.menuElejirJuegos();
           break;
         case '4':
+          console.clear();
           this.menuLogin();
           break;
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.mostrarMenuPrincipal();
       }
@@ -130,18 +137,23 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
+          console.clear();
           this.menutragamonedas();
           break;
         case '2': 
+        console.clear();
           this.menuBlackJack();
           break;
         case '3':
+          console.clear();
           this.menuCartaAlta();
           break;
         case '4':
+          console.clear();
           this.mostrarMenuPrincipal();
           break;
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menuElejirJuegos();
       }
@@ -164,22 +176,24 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionTragamonedas: string) => {
       switch (opcionTragamonedas) {
         case '1':
+          console.clear();
           this.menutragamonedasFrutas();
           break;
         case '2':
+          console.clear();
           this.menuSuperheroe();
           break;
         case '3':
+          console.clear();
           this.menuElejirJuegos();
           break;
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menutragamonedas();
       }
     });
   }
-
-
 
   //Menu Tragamonedas Frutas
   menutragamonedasFrutas() {
@@ -194,17 +208,21 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionFrutas: string) => {
       switch (opcionFrutas) {
         case '1':
+          console.clear();
           this.rl.close();
           const menuTragamonedasSuper1 = new MenuTragamonedas();
           menuTragamonedasSuper1.menuTragamonedasFruta();
           break;
         case '2':
+          console.clear();
           this.mostrarReglasFrutas()
           break;
         case '3':
+          console.clear();
           this.menutragamonedas();
           break;
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menutragamonedasFrutas();
       }
@@ -223,17 +241,21 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionSuperheroes: string) => {
       switch (opcionSuperheroes) {
         case '1':
+          console.clear();
           this.rl.close();
           const menuTragamonedasSuper2 = new MenuTragamonedas();
           menuTragamonedasSuper2.menuTragamonedasSuper();
           break;
         case '2':
+          console.clear();
           this.mostrarReglasSuperheroes()
           break;
         case '3':
+          console.clear();
           this.menutragamonedas();
           break;
         default:
+          console.clear();
           this.rl.close();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menuSuperheroe();
@@ -255,17 +277,21 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcionBlackjack: string) => {
       switch (opcionBlackjack) {
         case '1':
+          console.clear();
           this.rl.close();
           const juego1 = new MenuBlackJack();
           juego1.menu1();
           break;
         case '2':
+          console.clear();
           this.mostrarReglasBlackjack();
           break;
         case '3':
+          console.clear();
           this.menuElejirJuegos();
           break;
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menuBlackJack();
       }
@@ -287,17 +313,21 @@ export class MenuCasino {
     this.rl.question('Seleccione una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
+          console.clear();
           this.rl.close();
         const cartaAlta = new CartaAlta(this.jugador);
         cartaAlta.menu1();
         break;
         case '2':
+          console.clear();
           this.mostrarReglasCartaAlta();
           break;
         case '3':
+          console.clear();
           this.menuElejirJuegos();
           break;
         default:
+          console.clear();
           console.log('Opción inválida. Por favor, intente de nuevo.');
           this.menuCartaAlta();
       }
@@ -336,7 +366,6 @@ export class MenuCasino {
       }
     });
   }
-
 
   //Menues de Reglas de Juegos
   public mostrarReglasFrutas() {

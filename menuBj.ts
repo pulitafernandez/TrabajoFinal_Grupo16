@@ -28,12 +28,15 @@ export class MenuBlackJack implements Apostable{
     this.menu5.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
+          console.clear();
           this.menujuego();
           break;
         case '2':
+          console.clear();
           this.menu5.menuElejirJuegos();
           break;
         default:
+          console.clear();
           console.log('Opción inválida');
           this.menu1();
       }
@@ -51,18 +54,22 @@ export class MenuBlackJack implements Apostable{
     this.menu5.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
+          console.clear();
           this.cargarCredito();
           break;
         case '2':
+          console.clear();
           this.realizarApuesta();
           break;
         case '3':
+          console.clear();
           this.menu1();
           break;
         case '4':
           this.menu5.rl.close();
           break;
         default:
+          console.clear();
           console.log('Opción inválida');
           this.menu1();
       }
@@ -79,15 +86,18 @@ export class MenuBlackJack implements Apostable{
     //this.rl.question('Ingrese su opción: ', (opcion1) => {
       switch (opcion1) {
         case '1':
+          console.clear();
           this.blackjack1.pedirCartaJugador();
           this.blackjack1.mostrarCartaJug();
           this.sumaJugador = this.blackjack1.obtenerSumaJugador();
           this.chequearJugada();
           break;
         case '2':
+          console.clear();
           this.juegaConsola();
           break;
         default:
+          console.clear();
           console.log('Opción inválida');
           this.menu1();
       }
@@ -180,7 +190,7 @@ export class MenuBlackJack implements Apostable{
     //console.log(`chequearBJ no tienes 21BJ`);
       console.log("No hay blackjack");
       console.log(`---------------------------------------------------------------------- \n`);
-      this.menujuego1()
+      this.menujuego1();
     }
   }
 

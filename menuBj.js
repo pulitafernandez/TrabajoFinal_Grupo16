@@ -23,12 +23,15 @@ var MenuBlackJack = /** @class */ (function () {
         this.menu5.rl.question('Ingrese su opción: ', function (opcion1) {
             switch (opcion1) {
                 case '1':
+                    console.clear();
                     _this.menujuego();
                     break;
                 case '2':
+                    console.clear();
                     _this.menu5.menuElejirJuegos();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida');
                     _this.menu1();
             }
@@ -46,18 +49,22 @@ var MenuBlackJack = /** @class */ (function () {
         this.menu5.rl.question('Ingrese su opción: ', function (opcion1) {
             switch (opcion1) {
                 case '1':
+                    console.clear();
                     _this.cargarCredito();
                     break;
                 case '2':
+                    console.clear();
                     _this.realizarApuesta();
                     break;
                 case '3':
+                    console.clear();
                     _this.menu1();
                     break;
                 case '4':
                     _this.menu5.rl.close();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida');
                     _this.menu1();
             }
@@ -74,15 +81,18 @@ var MenuBlackJack = /** @class */ (function () {
             //this.rl.question('Ingrese su opción: ', (opcion1) => {
             switch (opcion1) {
                 case '1':
+                    console.clear();
                     _this.blackjack1.pedirCartaJugador();
                     _this.blackjack1.mostrarCartaJug();
                     _this.sumaJugador = _this.blackjack1.obtenerSumaJugador();
                     _this.chequearJugada();
                     break;
                 case '2':
+                    console.clear();
                     _this.juegaConsola();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida');
                     _this.menu1();
             }

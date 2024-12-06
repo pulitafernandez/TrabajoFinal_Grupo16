@@ -25,7 +25,7 @@ var CartaAlta = /** @class */ (function (_super) {
         var _this = _super.call(this, "CartaAlta") || this;
         _this.menu4 = new MenuCasino_1.MenuCasino();
         _this.jugador = jugador;
-        _this.cartaActual;
+        _this.cartaActual = Carta_1.Carta.obtenerCartaAleatoria();
         return _this;
     }
     CartaAlta.prototype.menu1 = function () {
@@ -118,6 +118,8 @@ var CartaAlta = /** @class */ (function (_super) {
             return true;
         }
         else {
+            console.log("¡Perdiste!");
+            this.menu4.setcreditosMcasino(this.menu4.getcreditosMcasino() - (this.apuesta1)); // resta apuesta
             this.actualizarSaldo();
             return false;
         }

@@ -47,6 +47,7 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Ingrese una opción: ', function (opcion) {
             switch (opcion) {
                 case '1':
+                    console.clear();
                     // Solicitar el nombre del usuario
                     _this.rl.question('Cargar su nombre de usuario: ', function (nombre) {
                         // Solicitar el saldo inicial
@@ -62,10 +63,12 @@ var MenuCasino = /** @class */ (function () {
                     });
                     break;
                 case '2':
+                    console.clear();
                     console.log('Gracias por visitar Casino Grupo 16');
                     _this.rl.close();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menuLogin();
             }
@@ -85,18 +88,23 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Ingrese una opción: ', function (opcion) {
             switch (opcion) {
                 case '1':
+                    console.clear();
                     _this.consultarSaldo();
                     break;
                 case '2':
+                    console.clear();
                     _this.cargarCreditos();
                     break;
                 case '3':
+                    console.clear();
                     _this.menuElejirJuegos();
                     break;
                 case '4':
+                    console.clear();
                     _this.menuLogin();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.mostrarMenuPrincipal();
             }
@@ -116,18 +124,23 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcion) {
             switch (opcion) {
                 case '1':
+                    console.clear();
                     _this.menutragamonedas();
                     break;
                 case '2':
+                    console.clear();
                     _this.menuBlackJack();
                     break;
                 case '3':
+                    console.clear();
                     _this.menuCartaAlta();
                     break;
                 case '4':
+                    console.clear();
                     _this.mostrarMenuPrincipal();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menuElejirJuegos();
             }
@@ -147,15 +160,19 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionTragamonedas) {
             switch (opcionTragamonedas) {
                 case '1':
+                    console.clear();
                     _this.menutragamonedasFrutas();
                     break;
                 case '2':
+                    console.clear();
                     _this.menuSuperheroe();
                     break;
                 case '3':
+                    console.clear();
                     _this.menuElejirJuegos();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menutragamonedas();
             }
@@ -175,17 +192,21 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionFrutas) {
             switch (opcionFrutas) {
                 case '1':
+                    console.clear();
                     _this.rl.close();
                     var menuTragamonedasSuper1 = new MenuTragamonedas_1.MenuTragamonedas();
                     menuTragamonedasSuper1.menuTragamonedasFruta();
                     break;
                 case '2':
+                    console.clear();
                     _this.mostrarReglasFrutas();
                     break;
                 case '3':
+                    console.clear();
                     _this.menutragamonedas();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menutragamonedasFrutas();
             }
@@ -205,17 +226,21 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionSuperheroes) {
             switch (opcionSuperheroes) {
                 case '1':
+                    console.clear();
                     _this.rl.close();
                     var menuTragamonedasSuper2 = new MenuTragamonedas_1.MenuTragamonedas();
                     menuTragamonedasSuper2.menuTragamonedasSuper();
                     break;
                 case '2':
+                    console.clear();
                     _this.mostrarReglasSuperheroes();
                     break;
                 case '3':
+                    console.clear();
                     _this.menutragamonedas();
                     break;
                 default:
+                    console.clear();
                     _this.rl.close();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menuSuperheroe();
@@ -236,17 +261,21 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcionBlackjack) {
             switch (opcionBlackjack) {
                 case '1':
+                    console.clear();
                     _this.rl.close();
                     var juego1 = new menuBj_1.MenuBlackJack();
                     juego1.menu1();
                     break;
                 case '2':
+                    console.clear();
                     _this.mostrarReglasBlackjack();
                     break;
                 case '3':
+                    console.clear();
                     _this.menuElejirJuegos();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menuBlackJack();
             }
@@ -268,17 +297,21 @@ var MenuCasino = /** @class */ (function () {
         this.rl.question('Seleccione una opción: ', function (opcion) {
             switch (opcion) {
                 case '1':
+                    console.clear();
                     _this.rl.close();
                     var cartaAlta = new CartaAlta_1.CartaAlta(_this.jugador);
                     cartaAlta.menu1();
                     break;
                 case '2':
+                    console.clear();
                     _this.mostrarReglasCartaAlta();
                     break;
                 case '3':
+                    console.clear();
                     _this.menuElejirJuegos();
                     break;
                 default:
+                    console.clear();
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.menuCartaAlta();
             }

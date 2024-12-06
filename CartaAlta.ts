@@ -7,14 +7,13 @@ import { MenuCasino } from './MenuCasino';
 export class CartaAlta extends Juego implements Apostable {
     private jugador: Jugador;
     private cartaActual: Carta;
-
     private apuesta1!: number;
 
-
+ 
     constructor(jugador: Jugador) {
         super("CartaAlta");
         this.jugador = jugador;
-        this.cartaActual;
+        this.cartaActual = Carta.obtenerCartaAleatoria();
     }
     
     menu4 = new MenuCasino();
@@ -107,6 +106,8 @@ export class CartaAlta extends Juego implements Apostable {
             this.actualizarSaldo();
             return true;
         } else {
+            console.log("¡Perdiste!");
+            this.menu4.setcreditosMcasino(this.menu4.getcreditosMcasino() - (this.apuesta1)); // resta apuesta
             this.actualizarSaldo();
             return false;
         }
