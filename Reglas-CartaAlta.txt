@@ -1,0 +1,5 @@
+Reglas del Juego "Carta Alta":
+
+1. El jugador apostara una cantidad minima predefinida de $100.
+2. Se le presenta una carta y debe elegir si la siguiente será mayor o menor.
+3. Si gana, recibe el doble de su apuesta. Si pierde, pierde la apuesta.

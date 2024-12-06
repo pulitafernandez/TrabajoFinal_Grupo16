@@ -1,0 +1,10 @@
+Reglas del Juego "Blackjack":
+
+El objetivo del juego es acercarse lo más posible a 21 puntos sin pasarse.
+El jugador puede pedir cartas adicionales o plantarse con las cartas que tiene.
+Las cartas del 2 al 10 tienen su valor nominal.
+Las cartas J, Q, K valen 10 puntos.
+El As puede valer 1 o 11 puntos, según convenga al jugador.
+Si el jugador supera los 21 puntos, pierde automáticamente.
+El jugador gana si su mano es mayor que la de la banca sin pasarse de 21.
+Si la banca tiene una mano más alta o el jugador se pasa de 21, el jugador pierde.

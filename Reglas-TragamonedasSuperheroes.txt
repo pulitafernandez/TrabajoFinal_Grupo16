@@ -1,0 +1,7 @@
+Reglas del Juego "Tragamonedas Superhéroes":
+
+1. El jugador debe realizar una apuesta mínima para jugar.
+2. El jugador debe presionar el botón "Jugar" para hacer girar las ruedas de los superhéroes.
+3. Si obtiene una combinación ganadora de superhéroes, gana una cantidad determinada.
+4. Si obtiene una combinación no ganadora, pierde su apuesta.
+5. El juego continuará mientras el jugador tenga créditos suficientes.

@@ -5,6 +5,7 @@ import { Casino } from './Casino';
 import { MenuBlackJack } from './MenuBj';
 import { MenuTragamonedas } from './MenuTragamonedas';
 import { CartaAlta } from './CartaAlta';
+import * as fs from 'fs'
 
 export class MenuCasino {
   private static instance: MenuCasino;
@@ -102,10 +103,10 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
   // Función que muestra el menú principal y maneja las opciones
   mostrarMenuPrincipal(): void {
 
-    console.log('***************************************');
-    console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
-    console.log('*    Bienvenido al Casino Grupo 16    *');
-    console.log('***************************************' + '\n');
+    console.log('\n****************************************');
+    console.log(`* Jugador: ${MenuCasino.nombreMcasino} - Creditos: ${MenuCasino.creditosMcasino } *`);
+    console.log('*     Bienvenido al Casino Grupo 16    *');
+    console.log('****************************************' + '\n');
     console.log('1 - Consultar Crédito');
     console.log('2 - Cargar Crédito');
     console.log('3 - Juegos');
@@ -239,7 +240,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
           menuTragamonedasSuper1.menuTragamonedasFruta();
           break;
         case '2':
-          // Reglas Frutas
+          this.mostrarReglasFrutas();
           break;
         case '3':
           this.menutragamonedas();
@@ -250,6 +251,17 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
       }
     });
   }
+
+  mostrarReglasFrutas() {
+    fs.readFile('./Reglas-TragamonedasFrutas.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+        if (err) {
+            console.error('Error al leer las reglas:', err);
+            return;
+        }
+        console.log('\n' + data);
+        this.menutragamonedasFrutas();  // Regresa al menú de Tragamonedas Frutas después de mostrar las reglas
+    });
+}
 
   menuSuperheroe1() {
     console.log(`****************************`);
@@ -267,7 +279,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
           menuTragamonedasSuper2.menuTragamonedasSuper();
           break;
         case '2':
-          // Reglas Superheroes
+          this.mostrarReglasSuperheroes();
           break;
         case '3':
           this.menutragamonedas();
@@ -279,9 +291,20 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
     });
   }
 
+  mostrarReglasSuperheroes() {
+    fs.readFile('./Reglas-TragamonedasSuperheroes.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+        if (err) {
+            console.error('Error al leer las reglas:', err);
+            return;
+        }
+        console.log('\n' + data);
+        this.menuSuperheroe1();  // Regresa al menú de Tragamonedas Superhéroes después de mostrar las reglas
+    });
+}
+
   private menuBlackJack124() {
-    console.log(`****************************`);
-    console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
+    console.log(`\n****************************`);
+    console.log(`* Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino } *`);
     console.log(`****************************`+ '\n');
     console.log('BLACKJACK');
     console.log('1- Jugar');
@@ -295,7 +318,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
           juego1.menu1();
           break;
         case '2':
-          // Reglas del Blackjack
+          this.mostrarReglasBlackjack(); 
           break;
         case '3':
           this.menuElejirJuegos();
@@ -307,12 +330,25 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
     });
   }
 
+  // Método para mostrar las reglas del Blackjack desde un archivo
+private mostrarReglasBlackjack() {
+  const fs = require('fs');
+  fs.readFile('./Reglas-Blackjack.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+    if (err) {
+          console.error('Error al leer las reglas:', err);
+          return;
+      }
+      console.log('\n' + data);
+      this.menuBlackJack124();  // Regresa al menú de Blackjack después de mostrar las reglas
+  });
+}
+
   menuCartaAlta() {
     const apuestaMinima = 100;
     const cartaAlta = new CartaAlta(apuestaMinima, this.jugador);
-    console.log(`****************************`);
-    console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
-    console.log(`****************************`+ '\n');
+    console.log(`\n*************************************`);
+    console.log(`* Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }  *`);
+    console.log(`*************************************`+ '\n');
     console.log('*****************************');
     console.log('*        Carta Alta         *');
     console.log('*****************************');
@@ -326,7 +362,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
           cartaAlta.iniciarJuego();
           break;
         case '2':
-          // Reglas Carta Alta
+          this.mostrarReglas();
           break;
         case '3':
           this.menuElejirJuegos();
@@ -337,4 +373,17 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
       }
     });
   }
+
+  // Método para mostrar las reglas
+  mostrarReglas(): void {
+    fs.readFile('./Reglas-CartaAlta.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
+      if (err) {
+          console.error('Error al leer las reglas:', err);
+          return;
+      }
+      console.log('\n' + data);
+      this.menuCartaAlta();  // Regresa al menú después de mostrar las reglas
+    });
+}
+
 }
