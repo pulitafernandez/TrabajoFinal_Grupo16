@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuCasino = void 0;
-//import * as readline from "readline-sync";
 var readline = require("readline");
 var Jugador_1 = require("./Jugador");
 var Casino_1 = require("./Casino");
 var menuBj_1 = require("./menuBj");
 var MenuTragamonedas_1 = require("./MenuTragamonedas");
 var CartaAlta_1 = require("./CartaAlta");
+var fs = require("fs");
 var MenuCasino = /** @class */ (function () {
     function MenuCasino() {
         this.rl = readline.createInterface({
@@ -36,7 +36,7 @@ var MenuCasino = /** @class */ (function () {
         }
         return MenuCasino.instance;
     };
-    // Función para mostrar el menú de login e ingresar nombre y créditos
+    //Menú de login e ingresar nombre y créditos
     MenuCasino.prototype.menuLogin = function () {
         var _this = this;
         console.log('*********************************');
@@ -71,7 +71,7 @@ var MenuCasino = /** @class */ (function () {
             }
         });
     };
-    // Función que muestra el menú principal y maneja las opciones
+    //Menú principal y manejar las opciones
     MenuCasino.prototype.mostrarMenuPrincipal = function () {
         var _this = this;
         console.log('***************************************');
@@ -99,6 +99,183 @@ var MenuCasino = /** @class */ (function () {
                 default:
                     console.log('Opción inválida. Por favor, intente de nuevo.');
                     _this.mostrarMenuPrincipal();
+            }
+        });
+    };
+    //Menú de Seleccion de juegos
+    MenuCasino.prototype.menuElejirJuegos = function () {
+        var _this = this;
+        console.log("****************************");
+        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
+        console.log("****************************" + '\n');
+        console.log('1- Tragamonedas');
+        console.log('2- BlackJack');
+        console.log('3- Carta Alta');
+        console.log('4- Volver');
+        console.log("---------------------------------------------" + '\n');
+        this.rl.question('Seleccione una opción: ', function (opcion) {
+            switch (opcion) {
+                case '1':
+                    _this.menutragamonedas();
+                    break;
+                case '2':
+                    _this.menuBlackJack();
+                    break;
+                case '3':
+                    _this.menuCartaAlta();
+                    break;
+                case '4':
+                    _this.mostrarMenuPrincipal();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuElejirJuegos();
+            }
+        });
+    };
+    //Menu Seleccion de Tragamonedas
+    MenuCasino.prototype.menutragamonedas = function () {
+        var _this = this;
+        console.log("****************************");
+        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
+        console.log("****************************" + '\n');
+        console.log('TRAGAMONEDAS');
+        console.log('1- Frutas');
+        console.log('2- Superheroes');
+        console.log('3- Volver');
+        console.log("---------------------------------------------" + '\n');
+        this.rl.question('Seleccione una opción: ', function (opcionTragamonedas) {
+            switch (opcionTragamonedas) {
+                case '1':
+                    _this.menutragamonedasFrutas();
+                    break;
+                case '2':
+                    _this.menuSuperheroe();
+                    break;
+                case '3':
+                    _this.menuElejirJuegos();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menutragamonedas();
+            }
+        });
+    };
+    //Menu Tragamonedas Frutas
+    MenuCasino.prototype.menutragamonedasFrutas = function () {
+        var _this = this;
+        console.log("****************************");
+        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
+        console.log("****************************" + '\n');
+        console.log('FRUTAS');
+        console.log('1- Jugar');
+        console.log('2- Reglas');
+        console.log('3- Volver');
+        console.log("---------------------------------------------" + '\n');
+        this.rl.question('Seleccione una opción: ', function (opcionFrutas) {
+            switch (opcionFrutas) {
+                case '1':
+                    var menuTragamonedasSuper1 = new MenuTragamonedas_1.MenuTragamonedas();
+                    menuTragamonedasSuper1.menuTragamonedasFruta();
+                    break;
+                case '2':
+                    _this.mostrarReglasFrutas();
+                    break;
+                case '3':
+                    _this.menutragamonedas();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menutragamonedasFrutas();
+            }
+        });
+    };
+    //Menu Tragamonedas Super Heroes
+    MenuCasino.prototype.menuSuperheroe = function () {
+        var _this = this;
+        console.log("****************************");
+        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
+        console.log("****************************" + '\n');
+        console.log('SUPERHEROES');
+        console.log('1- Jugar');
+        console.log('2- Reglas');
+        console.log('3- Volver');
+        console.log("---------------------------------------------" + '\n');
+        this.rl.question('Seleccione una opción: ', function (opcionSuperheroes) {
+            switch (opcionSuperheroes) {
+                case '1':
+                    var menuTragamonedasSuper2 = new MenuTragamonedas_1.MenuTragamonedas();
+                    menuTragamonedasSuper2.menuTragamonedasSuper();
+                    break;
+                case '2':
+                    _this.mostrarReglasSuperheroes();
+                    break;
+                case '3':
+                    _this.menutragamonedas();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuSuperheroe();
+            }
+        });
+    };
+    //Menu Black Jack
+    MenuCasino.prototype.menuBlackJack = function () {
+        var _this = this;
+        console.log("****************************");
+        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
+        console.log("****************************" + '\n');
+        console.log('BLACKJACK');
+        console.log('1- Jugar');
+        console.log('2- Reglas');
+        console.log('3- Volver');
+        console.log("---------------------------------------------" + '\n');
+        this.rl.question('Seleccione una opción: ', function (opcionBlackjack) {
+            switch (opcionBlackjack) {
+                case '1':
+                    var juego1 = new menuBj_1.MenuBlackJack();
+                    juego1.menu1();
+                    break;
+                case '2':
+                    _this.mostrarReglasBlackjack();
+                    break;
+                case '3':
+                    _this.menuElejirJuegos();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuBlackJack();
+            }
+        });
+    };
+    //Menu Carta Alta
+    MenuCasino.prototype.menuCartaAlta = function () {
+        var _this = this;
+        console.log("****************************");
+        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
+        console.log("****************************" + '\n');
+        console.log('*****************************');
+        console.log('*        Carta Alta         *');
+        console.log('*****************************');
+        console.log('1 - Jugar');
+        console.log('2 - Reglas');
+        console.log('3 - Volver');
+        console.log("---------------------------------------------" + '\n');
+        this.rl.question('Seleccione una opción: ', function (opcion) {
+            switch (opcion) {
+                case '1':
+                    var cartaAlta = new CartaAlta_1.CartaAlta(_this.jugador);
+                    cartaAlta.menu1();
+                    break;
+                case '2':
+                    _this.mostrarReglasCartaAlta();
+                    break;
+                case '3':
+                    _this.menuElejirJuegos();
+                    break;
+                default:
+                    console.log('Opción inválida. Por favor, intente de nuevo.');
+                    _this.menuCartaAlta();
             }
         });
     };
@@ -135,178 +312,50 @@ var MenuCasino = /** @class */ (function () {
             }
         });
     };
-    // Menú de juegos
-    MenuCasino.prototype.menuElejirJuegos = function () {
+    //Menues de Reglas de Juegos
+    MenuCasino.prototype.mostrarReglasFrutas = function () {
         var _this = this;
-        console.log("****************************");
-        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
-        console.log("****************************" + '\n');
-        console.log('1- Tragamonedas');
-        console.log('2- BlackJack');
-        console.log('3- Carta Alta');
-        console.log('4- Volver');
-        console.log("---------------------------------------------" + '\n');
-        this.rl.question('Seleccione una opción: ', function (opcion) {
-            switch (opcion) {
-                case '1':
-                    _this.menutragamonedas();
-                    break;
-                case '2':
-                    _this.menuBlackJack124();
-                    break;
-                case '3':
-                    _this.menuCartaAlta();
-                    break;
-                case '4':
-                    _this.mostrarMenuPrincipal();
-                    break;
-                default:
-                    console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menuElejirJuegos();
+        fs.readFile('./Reglas/Reglas-TragamonedasFrutas.txt', 'utf8', function (err, data) {
+            if (err) {
+                console.error('Error al leer las reglas:', err);
+                return;
             }
+            console.log('\n' + data);
+            _this.menutragamonedasFrutas(); // Regresa al menú de Tragamonedas Frutas después de mostrar las reglas
         });
     };
-    // Funciones de juegos
-    MenuCasino.prototype.menutragamonedas = function () {
+    MenuCasino.prototype.mostrarReglasSuperheroes = function () {
         var _this = this;
-        console.log("****************************");
-        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
-        console.log("****************************" + '\n');
-        console.log('TRAGAMONEDAS');
-        console.log('1- Frutas');
-        console.log('2- Superheroes');
-        console.log('3- Volver');
-        console.log("---------------------------------------------" + '\n');
-        this.rl.question('Seleccione una opción: ', function (opcionTragamonedas) {
-            switch (opcionTragamonedas) {
-                case '1':
-                    _this.menutragamonedasFrutas();
-                    break;
-                case '2':
-                    _this.menuSuperheroe1();
-                    break;
-                case '3':
-                    _this.menuElejirJuegos();
-                    break;
-                default:
-                    console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menutragamonedas();
+        fs.readFile('./Reglas/Reglas-TragamonedasSuperheroes.txt', 'utf8', function (err, data) {
+            if (err) {
+                console.error('Error al leer las reglas:', err);
+                return;
             }
+            console.log('\n' + data);
+            _this.menuSuperheroe(); // Regresa al menú de Tragamonedas Superhéroes después de mostrar las reglas
         });
     };
-    MenuCasino.prototype.menutragamonedasFrutas = function () {
+    MenuCasino.prototype.mostrarReglasBlackjack = function () {
         var _this = this;
-        console.log("****************************");
-        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
-        console.log("****************************" + '\n');
-        console.log('FRUTAS');
-        console.log('1- Jugar');
-        console.log('2- Reglas');
-        console.log('3- Volver');
-        console.log("---------------------------------------------" + '\n');
-        this.rl.question('Seleccione una opción: ', function (opcionFrutas) {
-            switch (opcionFrutas) {
-                case '1':
-                    var menuTragamonedasSuper1 = new MenuTragamonedas_1.MenuTragamonedas();
-                    menuTragamonedasSuper1.menuTragamonedasFruta();
-                    break;
-                case '2':
-                    // Reglas Frutas
-                    break;
-                case '3':
-                    _this.menutragamonedas();
-                    break;
-                default:
-                    console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menutragamonedasFrutas();
+        var fs = require('fs');
+        fs.readFile('./Reglas/Reglas-Blackjack.txt', 'utf8', function (err, data) {
+            if (err) {
+                console.error('Error al leer las reglas:', err);
+                return;
             }
+            console.log('\n' + data);
+            _this.menuBlackJack(); // Regresa al menú de Blackjack después de mostrar las reglas
         });
     };
-    MenuCasino.prototype.menuSuperheroe1 = function () {
+    MenuCasino.prototype.mostrarReglasCartaAlta = function () {
         var _this = this;
-        console.log("****************************");
-        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
-        console.log("****************************" + '\n');
-        console.log('SUPERHEROES');
-        console.log('1- Jugar');
-        console.log('2- Reglas');
-        console.log('3- Volver');
-        console.log("---------------------------------------------" + '\n');
-        this.rl.question('Seleccione una opción: ', function (opcionSuperheroes) {
-            switch (opcionSuperheroes) {
-                case '1':
-                    var menuTragamonedasSuper2 = new MenuTragamonedas_1.MenuTragamonedas();
-                    menuTragamonedasSuper2.menuTragamonedasSuper();
-                    break;
-                case '2':
-                    // Reglas Superheroes
-                    break;
-                case '3':
-                    _this.menutragamonedas();
-                    break;
-                default:
-                    console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menuSuperheroe1();
+        fs.readFile('./Reglas/Reglas-CartaAlta.txt', 'utf8', function (err, data) {
+            if (err) {
+                console.error('Error al leer las reglas:', err);
+                return;
             }
-        });
-    };
-    MenuCasino.prototype.menuBlackJack124 = function () {
-        var _this = this;
-        console.log("****************************");
-        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
-        console.log("****************************" + '\n');
-        console.log('BLACKJACK');
-        console.log('1- Jugar');
-        console.log('2- Reglas');
-        console.log('3- Volver');
-        console.log("---------------------------------------------" + '\n');
-        this.rl.question('Seleccione una opción: ', function (opcionBlackjack) {
-            switch (opcionBlackjack) {
-                case '1':
-                    var juego1 = new menuBj_1.MenuBlackJack();
-                    juego1.menu1();
-                    break;
-                case '2':
-                    // Reglas del Blackjack
-                    break;
-                case '3':
-                    _this.menuElejirJuegos();
-                    break;
-                default:
-                    console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menuBlackJack124();
-            }
-        });
-    };
-    MenuCasino.prototype.menuCartaAlta = function () {
-        var _this = this;
-        var apuestaMinima = 100;
-        var cartaAlta = new CartaAlta_1.CartaAlta(apuestaMinima, this.jugador);
-        console.log("****************************");
-        console.log("*Jugador: ".concat(MenuCasino.nombreMcasino, " Creditos: ").concat(MenuCasino.creditosMcasino, "*"));
-        console.log("****************************" + '\n');
-        console.log('*****************************');
-        console.log('*        Carta Alta         *');
-        console.log('*****************************');
-        console.log('1 - Jugar');
-        console.log('2 - Reglas');
-        console.log('3 - Volver');
-        console.log("---------------------------------------------" + '\n');
-        this.rl.question('Seleccione una opción: ', function (opcion) {
-            switch (opcion) {
-                case '1':
-                    cartaAlta.iniciarJuego();
-                    break;
-                case '2':
-                    // Reglas Carta Alta
-                    break;
-                case '3':
-                    _this.menuElejirJuegos();
-                    break;
-                default:
-                    console.log('Opción inválida. Por favor, intente de nuevo.');
-                    _this.menuCartaAlta();
-            }
+            console.log('\n' + data);
+            _this.menuCartaAlta(); // Regresa al menú después de mostrar las reglas
         });
     };
     return MenuCasino;

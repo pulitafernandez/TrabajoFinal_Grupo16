@@ -1,0 +1,7 @@
+Reglas del Juego "Tragamonedas Frutas":
+
+1. El jugador debe realizar una apuesta mínima para jugar.
+2. El jugador debe presionar el botón "Jugar" para girar las frutas.
+3. Si obtiene una combinación ganadora de frutas, gana una cantidad determinada.
+4. Si obtiene una combinación no ganadora, pierde su apuesta.
+5. El juego continúa mientras el jugador tenga créditos disponibles.

@@ -1,18 +1,15 @@
-import { Apuesta } from "./Apuesta";
+//import { Apuesta } from "./Apuesta";
 
 export interface Apostable {
 
-
-    mostrarResultado(): void
-
+    
     cargarCredito(): void
-
-
     actualizarSaldo(): void
 
-
+    //no se estan usando
     cobrarPremio(): void
-
-
     realizarApuesta(): void
+    mostrarResultado(): void
+
 }
+

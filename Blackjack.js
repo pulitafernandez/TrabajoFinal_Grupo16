@@ -20,7 +20,7 @@ var Carta_1 = require("./Carta");
 var Juego_1 = require("./Juego");
 var BlackJack = /** @class */ (function (_super) {
     __extends(BlackJack, _super);
-    function BlackJack(apuestaMinima, jugador) {
+    function BlackJack() {
         var _this = _super.call(this, "BlackJack") || this;
         _this.jugador = [];
         _this.banca = [];
@@ -58,11 +58,6 @@ var BlackJack = /** @class */ (function (_super) {
     BlackJack.prototype.pedirCartaBanca = function () {
         this.banca.push(Carta_1.Carta.obtenerCartaAleatoria());
     };
-    BlackJack.prototype.mostrarResultado = function () { };
-    BlackJack.prototype.cargarCredito = function () { };
-    BlackJack.prototype.actualizarSaldo = function () { };
-    BlackJack.prototype.cobrarPremio = function () { };
-    BlackJack.prototype.realizarApuesta = function () { };
     return BlackJack;
 }(Juego_1.Juego));
 exports.BlackJack = BlackJack;
