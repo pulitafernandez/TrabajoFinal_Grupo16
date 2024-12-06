@@ -1,5 +1,6 @@
 import { Apostable } from "./InterfaceApuesta";
 import { Juego } from "./Juego";
+import { Jugador } from "./Jugador";
 
 export abstract class Tragamonedas extends Juego {
     tematica: string;
@@ -31,7 +32,7 @@ export abstract class Tragamonedas extends Juego {
     }*/
 
     //metodo abstracto
-    abstract iniciarJuego(): void;
+    abstract iniciarJuego(jugador1:Jugador, apuesta:number): void;
 
     //metodo abstracto
     public abstract mostrarResultado(): void;

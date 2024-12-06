@@ -52,7 +52,7 @@ export class MenuBlackJack implements Apostable{
           this.menujuego();
           break;
         case '3':
-          this.menu5.menuElejirJuegos();
+          this.menu5.menuElejirJuegos(this.jugadorPipe);
          
           break;
         default:

@@ -3,9 +3,10 @@ import * as readline from 'readline';
 import { Jugador } from './Jugador';
 import { Casino } from './Casino';
 import { MenuBlackJack } from './MenuBj';
-import { MenuTragamonedas } from './MenuTragamonedas';
 import { CartaAlta } from './CartaAlta';
 import * as fs from 'fs'
+import { TragamonedasFruta } from './TragamonedasFruta';
+import { TragamonedasAvanzado } from './TragamonedasAvanzado';
 
 export class MenuCasino {
   private static instance: MenuCasino;
@@ -14,7 +15,7 @@ export class MenuCasino {
   private jugador: Jugador;
    rl: readline.Interface;
 
-  constructor() {
+    constructor() {
     this.rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -56,8 +57,6 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
     return MenuCasino.instance;
   }
 
-
-
   // Función para mostrar el menú de login e ingresar nombre y créditos
   
   menuLogin(): void {
@@ -81,7 +80,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
               MenuCasino.creditosMcasino = parseInt(creditos);
 
               console.log(`\nBienvenido, ¡${nombre}! Su saldo inicial es de ${creditos} créditos.`);
-              this.mostrarMenuPrincipal();
+              this.mostrarMenuPrincipal(jugador1);
             });
           });
           break;
@@ -98,10 +97,8 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
 
   }
 
-
-
-  // Función que muestra el menú principal y maneja las opciones
-  mostrarMenuPrincipal(): void {
+    // Función que muestra el menú principal y maneja las opciones
+  mostrarMenuPrincipal(jugador1:Jugador): void {
 
     console.log('\n****************************************');
     console.log(`* Jugador: ${MenuCasino.nombreMcasino} - Creditos: ${MenuCasino.creditosMcasino } *`);
@@ -115,58 +112,52 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
     this.rl.question('Ingrese una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
-          this.consultarSaldo();
+          this.consultarSaldo(jugador1);
           break;
         case '2':
-          this.cargarCreditos();
+          this.cargarCreditos(jugador1);
           break;
         case '3':
-          this.menuElejirJuegos();
+          this.menuElejirJuegos(jugador1);
           break;
         case '4':
           this.menuLogin();
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
-          this.mostrarMenuPrincipal();
+          this.mostrarMenuPrincipal(jugador1);
       }
     });
   }
 
   // Consultar el saldo de créditos
-  private consultarSaldo(): void {
-    this.jugador.setCreditos(MenuCasino.creditosMcasino);
-    const creditos = this.jugador.consultarCreditos();
-    if (creditos !== undefined) {
-      console.log(`Su saldo es de $${creditos} créditos.`);
+public consultarSaldo(jugador1:Jugador): void {
+  jugador1.setCreditos(MenuCasino.creditosMcasino);
+  const creditos = jugador1.consultarCreditos();
+  if (creditos !== undefined) {
+    console.log(`Su saldo es de $${creditos} créditos.`);
     }
-    this.rl.question('Presione Enter para continuar...', () => {
-      this.mostrarMenuPrincipal();
-    });
-  }
+  this.mostrarMenuPrincipal(jugador1); // Volver directamente al menú principal
+}
 
   // Cargar créditos al jugador
-  private cargarCreditos(): void {
-    this.rl.question('Ingrese el monto a cargar: $', (monto: string) => {
-      const montoValido = parseInt(monto);
-      if (isNaN(montoValido) || montoValido <= 0) {
-        console.log('Error: Por favor ingrese un valor válido superior a 0');
-        this.rl.question('Presione Enter para continuar...', () => {
-          this.mostrarMenuPrincipal();
-        });
-      } else {
-        this.jugador.cargarCreditos(montoValido);
-        MenuCasino.creditosMcasino = this.jugador.consultarCreditos();
-        console.log(`Se han cargado $${montoValido}. Su nuevo saldo es: $${this.jugador.consultarCreditos()}.`);
-        this.rl.question('Presione Enter para continuar...', () => {
-          this.mostrarMenuPrincipal();
-        });
-      }
-    });
-  }
+public cargarCreditos(jugador1:Jugador): void {
+  this.rl.question('Ingrese el monto a cargar: $', (monto: string) => {
+    const montoValido = parseInt(monto);
+    if (isNaN(montoValido) || montoValido <= 0) {
+      console.log('Error: Por favor ingrese un valor válido superior a 0');
+      this.mostrarMenuPrincipal(jugador1); // Volver al menú principal automáticamente
+    } else {
+      jugador1.cargarCreditos(montoValido);
+      MenuCasino.creditosMcasino = jugador1.consultarCreditos();
+      console.log(`Se han cargado $${montoValido}. Su nuevo saldo es: $${jugador1.consultarCreditos()}.`);
+      this.mostrarMenuPrincipal(jugador1); // Volver al menú principal automáticamente
+    }
+  });
+}
 
   // Menú de juegos
-  public menuElejirJuegos(): void {
+  public menuElejirJuegos(jugador1:Jugador): void {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
     console.log(`****************************`+ '\n');
@@ -178,26 +169,26 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
     this.rl.question('Seleccione una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
-          this.menutragamonedas();
+          this.menutragamonedas(jugador1);
           break;
         case '2':
           this.menuBlackJack124();
           break;
         case '3':
-          this.menuCartaAlta();
+          this.menuCartaAlta(jugador1);
           break;
         case '4':
-          this.mostrarMenuPrincipal();
+          this.mostrarMenuPrincipal(jugador1);
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
-          this.menuElejirJuegos();
+          this.menuElejirJuegos(jugador1);
       }
     });
   }
 
   // Funciones de juegos
-  private menutragamonedas() {
+  private menutragamonedas(jugador1:Jugador) {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
     console.log(`****************************`+ '\n');
@@ -209,45 +200,56 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
     this.rl.question('Seleccione una opción: ', (opcionTragamonedas: string) => {
       switch (opcionTragamonedas) {
         case '1':
-          this.menutragamonedasFrutas();
+          this.menutragamonedasFrutas(jugador1);
           break;
         case '2':
-          this.menuSuperheroe1();
+          this.menuSuperheroe1(jugador1);
           break;
         case '3':
-          this.menuElejirJuegos();
+          this.menuElejirJuegos(jugador1);
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
-          this.menutragamonedas();
+          this.menutragamonedas(jugador1);
       }
     });
   }
 
-  menutragamonedasFrutas() {
+  menutragamonedasFrutas(jugador1:Jugador) {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
     console.log(`****************************`+ '\n');
     console.log('FRUTAS');
     console.log('1- Jugar');
-    console.log('2- Reglas');
-    console.log('3- Volver');
+    console.log('2- Ingresar más Creditos')
+    console.log('3- Reglas');
+    console.log('4- Volver');
     console.log(`---------------------------------------------`+ '\n');
     this.rl.question('Seleccione una opción: ', (opcionFrutas: string) => {
       switch (opcionFrutas) {
         case '1':
-          const menuTragamonedasSuper1 = new MenuTragamonedas();
-          menuTragamonedasSuper1.menuTragamonedasFruta();
-          break;
+          this.rl.question('Ingrese la apuesta deseada: ', (apuestaMinima: string) => {
+          const tragamonedaFruta1 = new TragamonedasFruta (Number(apuestaMinima));
+          tragamonedaFruta1.iniciarJuego(jugador1,Number(apuestaMinima));
+          this.menutragamonedasFrutas(jugador1);
+        });
+        break;
         case '2':
-          this.mostrarReglasFrutas();
+          this.rl.question('Ingrese el monto a cargar: $ ', (monto: string) => {
+            const montoReal:number= Number(monto);
+            jugador1.cargarCreditos(montoReal);
+            this.menutragamonedasFrutas(jugador1);
+          });
           break;
         case '3':
-          this.menutragamonedas();
+          this.mostrarReglasFrutas();
+          break;
+        case '4':
+          this.menutragamonedas(jugador1);
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
-          this.menutragamonedasFrutas();
+          this.menutragamonedasFrutas(jugador1);
       }
     });
   }
@@ -259,34 +261,45 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
             return;
         }
         console.log('\n' + data);
-        this.menutragamonedasFrutas();  // Regresa al menú de Tragamonedas Frutas después de mostrar las reglas
+        this.menutragamonedasFrutas(this.jugador);  // Regresa al menú de Tragamonedas Frutas después de mostrar las reglas
     });
 }
 
-  menuSuperheroe1() {
+  menuSuperheroe1(jugador1:Jugador) {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino }*`);
     console.log(`****************************`+ '\n');
     console.log('SUPERHEROES');
     console.log('1- Jugar');
-    console.log('2- Reglas');
-    console.log('3- Volver');
+    console.log('2- Ingresar más Creditos')
+    console.log('3- Reglas');
+    console.log('4- Volver');
     console.log(`---------------------------------------------`+ '\n');
     this.rl.question('Seleccione una opción: ', (opcionSuperheroes: string) => {
       switch (opcionSuperheroes) {
         case '1':
-          const menuTragamonedasSuper2 = new MenuTragamonedas();
-          menuTragamonedasSuper2.menuTragamonedasSuper();
-          break;
+          this.rl.question('Ingrese la apuesta deseada: ', (apuestaMinima: string) => {
+          const TragamonedasAvanzado1 = new TragamonedasAvanzado (Number(apuestaMinima));
+          TragamonedasAvanzado1.iniciarJuego(jugador1,Number(apuestaMinima));
+          this.menuSuperheroe1(jugador1);
+        });
+        break;
         case '2':
-          this.mostrarReglasSuperheroes();
+          this.rl.question('Ingrese el monto a cargar: $ ', (monto: string) => {
+            const montoReal:number= Number(monto);
+            jugador1.cargarCreditos(montoReal);
+            this.menuSuperheroe1(jugador1);
+          });
           break;
         case '3':
-          this.menutragamonedas();
+          this.mostrarReglasSuperheroes();
+          break;
+        case '4':
+          this.menutragamonedas(jugador1);
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
-          this.menuSuperheroe1();
+          this.menuSuperheroe1(jugador1);
       }
     });
   }
@@ -298,7 +311,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
             return;
         }
         console.log('\n' + data);
-        this.menuSuperheroe1();  // Regresa al menú de Tragamonedas Superhéroes después de mostrar las reglas
+        this.menuSuperheroe1(this.jugador);  // Regresa al menú de Tragamonedas Superhéroes después de mostrar las reglas
     });
 }
 
@@ -321,7 +334,7 @@ MenuCasino.nombreMcasino = nuevonombreMcasino;
           this.mostrarReglasBlackjack(); 
           break;
         case '3':
-          this.menuElejirJuegos();
+          this.menuElejirJuegos(this.jugador);
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
@@ -343,7 +356,7 @@ private mostrarReglasBlackjack() {
   });
 }
 
-  menuCartaAlta() {
+  menuCartaAlta(jugador1:Jugador) {
     const apuestaMinima = 100;
     const cartaAlta = new CartaAlta(apuestaMinima, this.jugador);
     console.log(`\n*************************************`);
@@ -353,23 +366,31 @@ private mostrarReglasBlackjack() {
     console.log('*        Carta Alta         *');
     console.log('*****************************');
     console.log('1 - Jugar');
-    console.log('2 - Reglas');
-    console.log('3 - Volver');
+    console.log('2 - Ingresar más Creditos')
+    console.log('3 - Reglas');
+    console.log('4 - Volver');
     console.log(`---------------------------------------------`+ '\n');
     this.rl.question('Seleccione una opción: ', (opcion: string) => {
       switch (opcion) {
         case '1':
-          cartaAlta.iniciarJuego();
+          cartaAlta.iniciarJuego(jugador1);
           break;
-        case '2':
-          this.mostrarReglas();
+          case '2':
+          this.rl.question('Ingrese el monto a cargar: $ ', (monto: string) => {
+            const montoReal:number= Number(monto);
+            jugador1.cargarCreditos(montoReal);
+            this.menuCartaAlta(jugador1);
+          });
           break;
         case '3':
-          this.menuElejirJuegos();
+          this.mostrarReglas();
+          break;
+        case '4':
+          this.menuElejirJuegos(this.jugador);
           break;
         default:
           console.log('Opción inválida. Por favor, intente de nuevo.');
-          this.menuCartaAlta();
+          this.menuCartaAlta(jugador1);
       }
     });
   }
@@ -382,8 +403,7 @@ private mostrarReglasBlackjack() {
           return;
       }
       console.log('\n' + data);
-      this.menuCartaAlta();  // Regresa al menú después de mostrar las reglas
+      this.menuCartaAlta(this.jugador);  // Regresa al menú después de mostrar las reglas
     });
 }
-
 }

@@ -17,14 +17,14 @@ export class CartaAlta extends Juego implements Apostable {
     }
 
     // Inicia el juego validando si el jugador tiene créditos suficientes
-iniciarJuego(): void {
-    if (this.jugador.consultarCreditos() < this.apuestaMinima) {
+iniciarJuego(jugador1:Jugador): void {
+    if (jugador1.consultarCreditos() < this.apuestaMinima) {
         console.log("No tienes suficientes créditos para jugar.");
         this.volverAlMenuPrincipal(); // Redirigir al menú de selección de juegos si no hay suficientes créditos
         return;
     }
     this.cartaActual = Carta.obtenerCartaAleatoria();
-    console.log(`¡Juego iniciado por ${this.jugador.getNombre()}! Carta inicial: ${this.cartaActual.getNombre()}`);
+    console.log(`¡Juego iniciado por ${jugador1.getNombre()}! Carta inicial: ${this.cartaActual.getNombre()}`);
     this.jugarCartaAlta();
 }
 
@@ -106,7 +106,7 @@ iniciarJuego(): void {
                 case '1':
                     console.log("¡Volviendo a jugar!");
                     rl.close();  // Cierra la interfaz readline antes de reiniciar el juego
-                    this.iniciarJuego(); // Vuelve a iniciar el juego de Carta Alta
+                    this.iniciarJuego(this.jugador); // Vuelve a iniciar el juego de Carta Alta
                     break;
                 case '2':
                     console.log("Volviendo al menú principal...");
@@ -124,7 +124,7 @@ iniciarJuego(): void {
     // Método para volver al menú principal (utiliza la clase MenuCasino)
     volverAlMenuPrincipal(): void {
         const menuCasino = MenuCasino.getInstance(); // Obtén la instancia de MenuCasino
-        menuCasino.menuElejirJuegos(); // Llama al método para mostrar el menú de juegos
+        menuCasino.menuElejirJuegos(this.jugador); // Llama al método para mostrar el menú de juegos
     }
 
     //Método para cargar créditos al jugador

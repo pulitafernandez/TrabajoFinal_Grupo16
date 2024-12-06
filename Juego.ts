@@ -9,7 +9,8 @@ export abstract class Juego {
 
 
     }
-    iniciarJuego() { }
+    /*
+    iniciarJuego() { }*/
     // public esValida(apuestaMinima: number): boolean {
     //     return this.cantidadApuesta >= apuestaMinima;
     // }

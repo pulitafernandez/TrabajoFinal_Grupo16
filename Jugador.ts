@@ -27,8 +27,6 @@ export class Jugador {
     }
 
 
-  
-
     public setCreditos(nuevoCreditos: number): void {
         this.creditos = nuevoCreditos;
       }

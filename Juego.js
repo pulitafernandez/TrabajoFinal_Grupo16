@@ -5,7 +5,8 @@ class Juego {
     constructor(nombre) {
         this.nombre = nombre;
     }
-    iniciarJuego() { }
+    /*
+    iniciarJuego() { }*/
     // public esValida(apuestaMinima: number): boolean {
     //     return this.cantidadApuesta >= apuestaMinima;
     // }

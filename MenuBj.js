@@ -37,7 +37,7 @@ class MenuBlackJack {
                     this.menujuego();
                     break;
                 case '3':
-                    this.menu5.menuElejirJuegos();
+                    this.menu5.menuElejirJuegos(this.jugadorPipe);
                     break;
                 default:
                     console.log('Opción inválida');

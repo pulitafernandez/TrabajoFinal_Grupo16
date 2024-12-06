@@ -1,3 +1,4 @@
+import { Jugador } from "./Jugador";
 import { Tragamonedas } from "./Tragamonedas";
 
 export class TragamonedasAvanzado extends Tragamonedas {
@@ -15,8 +16,7 @@ export class TragamonedasAvanzado extends Tragamonedas {
         this.carretes = Array.from({ length: this.carretesCount }, () => []); // Inicializamos el array de carretes
     }
     // Implementación de iniciarJuego para TragamonedasAvanzado
-    iniciarJuego(): void {
-        console.log("Girando los carretes de Tragamonedas Avanzado...");
+    iniciarJuego(jugador1:Jugador, apuesta:number): void {
         console.log("Girando los carretes de Tragamonedas Avanzado: Superhéroes...");
 
         // Llenamos cada carrete con una combinación aleatoria de símbolos
@@ -33,8 +33,10 @@ export class TragamonedasAvanzado extends Tragamonedas {
             const resultadoGanador = this.evaluarGanador();
             if (resultadoGanador) {
                 console.log("¡Has ganado! Felicitaciones, tu superhéroe ha salvado el día.");
+                jugador1.cargarCreditos(apuesta);
             } else {
                 console.log("No has ganado esta vez. ¡Sigue luchando!");
+                jugador1.cargarCreditos(-apuesta);
             }
         }
     }

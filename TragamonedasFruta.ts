@@ -1,3 +1,4 @@
+import { Jugador } from "./Jugador";
 import { Tragamonedas } from "./Tragamonedas";
 
 export class TragamonedasFruta extends Tragamonedas {
@@ -14,7 +15,7 @@ export class TragamonedasFruta extends Tragamonedas {
     }
 
     // Implementación de iniciarJuego para TragamonedasFrutas
-    iniciarJuego(): void {
+    iniciarJuego(jugador1:Jugador, apuesta:number): void {
         console.log("Girando los carretes de Tragamonedas Frutas...");
         // Llenar cada carrete con una combinación aleatoria de frutas
         for (let i = 0; i < this.carretes.length; i++) {
@@ -31,10 +32,13 @@ export class TragamonedasFruta extends Tragamonedas {
         const resultadoGanador = this.evaluarGanador();
         if (resultadoGanador) {
         console.log("¡Has ganado!");
+        jugador1.cargarCreditos(apuesta);
         } else {
         console.log("No has ganado esta vez. ¡Sigue intentándolo!");
+        jugador1.cargarCreditos(-apuesta);
         }
     } 
+
 
 
     //implemento el metodo generarResultado
