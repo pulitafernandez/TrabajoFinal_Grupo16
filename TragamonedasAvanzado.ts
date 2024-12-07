@@ -7,7 +7,7 @@ export class TragamonedasAvanzado extends Tragamonedas implements Apostable {
     private simbolos: string[];      // Los símbolos disponibles para los carretes (superhéroes)
     private carretesCount: number;   // Cantidad de carretes
     private filasCount: number;
-    private apuesta: number;
+    private apuesta = 0;
     constructor() {
         super("Tragamonedas Avanzado", "Superheroes");
         this.simbolos = ["🦸‍♂️", "🦸‍♀️", "💥", "⚡", "🛡️", "🦸‍♂️🦹‍♂️"]; // Ejemplo de superhéroes, poderes y comodines
@@ -29,7 +29,6 @@ export class TragamonedasAvanzado extends Tragamonedas implements Apostable {
         this.menu1.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 1000 y la maxima es de 10000): ', (apuesta) => {
             const apuestaNumero = parseInt(apuesta);
             if (apuestaNumero >= 1000 && apuestaNumero <= 10000 && this.menu1.getcreditosMcasino() >= apuestaNumero) {
-                // if (this.menu5.getcreditosMcasino() >= apuestaNumero) {
                 this.apuesta = apuestaNumero;
                 this.menu1.setcreditosMcasino(this.menu1.getcreditosMcasino() - this.apuesta);
                 console.log(`---------------------------------------------------------------------- \n`);
@@ -42,7 +41,7 @@ export class TragamonedasAvanzado extends Tragamonedas implements Apostable {
                 console.log(`---------------------------------------------------------------------- \n`);
                 console.log(`Su apuesta no esta entre los parametros requeridos`);
                 this.apuesta = 0;
-                this.menu1.mostrarReglasSuperheroes();
+                this.menu1.menuSuperheroe();
             }
         });
     }
@@ -59,7 +58,6 @@ export class TragamonedasAvanzado extends Tragamonedas implements Apostable {
             }
             // Mostrar los resultados de los carretes
         }
-        // this.mostrarResultado();
         // Evaluar si el jugador ha ganado
         const resultadoGanador = this.evaluarGanador();
         if (resultadoGanador) {
@@ -82,7 +80,7 @@ export class TragamonedasAvanzado extends Tragamonedas implements Apostable {
     }
 
     // Evaluar si hay una combinación ganadora
-    private evaluarGanador(): boolean {
+    public evaluarGanador(): boolean {
         // Evaluar combinaciones de superhéroes o poderes en las filas
         for (let i = 0; i < this.filasCount; i++) {
             const combinacion = this.carretes.map(carrete => carrete[i]); // Tomamos una fila de cada carrete
@@ -97,5 +95,4 @@ export class TragamonedasAvanzado extends Tragamonedas implements Apostable {
     }
 
     public cargarCredito(): void { }
-
 }

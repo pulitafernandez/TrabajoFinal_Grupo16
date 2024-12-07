@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Jugador = void 0;
-var Jugador = /** @class */ (function () {
-    function Jugador(nombre, creditos) {
+class Jugador {
+    constructor(nombre, creditos) {
         this.idJugador = 0;
         this.min = 0;
         this.max = 1000;
@@ -11,29 +11,28 @@ var Jugador = /** @class */ (function () {
         this.idJugador = (Math.floor(Math.random() * (this.max - this.min + 1)) + this.min);
     }
     // Manejo Creditos
-    Jugador.prototype.cargarCreditos = function (monto) {
+    cargarCreditos(monto) {
         this.creditos += monto;
-        console.log("Su cr\u00E9dito actual es: $".concat(this.creditos));
-    };
-    Jugador.prototype.setCreditos = function (nuevoCreditos) {
+        console.log(`Su crédito actual es: $${this.creditos}`);
+    }
+    setCreditos(nuevoCreditos) {
         this.creditos = nuevoCreditos;
-    };
-    Jugador.prototype.consultarCreditos = function () {
+    }
+    consultarCreditos() {
         return this.creditos;
-    };
+    }
     //Getters y setters
-    Jugador.prototype.getNombre = function () {
+    getNombre() {
         return this.nombre;
-    };
-    Jugador.prototype.setNombre = function (nuevoNombre) {
+    }
+    setNombre(nuevoNombre) {
         this.nombre = nuevoNombre;
-    };
-    Jugador.prototype.getIdJugador = function () {
+    }
+    getIdJugador() {
         return this.idJugador;
-    };
-    Jugador.prototype.setIdJugador = function (nuevoidJugador) {
+    }
+    setIdJugador(nuevoidJugador) {
         this.idJugador = nuevoidJugador;
-    };
-    return Jugador;
-}());
+    }
+}
 exports.Jugador = Jugador;

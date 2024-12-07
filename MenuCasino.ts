@@ -1,7 +1,7 @@
 import * as readline from 'readline';
 import { Jugador } from './Jugador';
 import { Casino } from './Casino';
-import { MenuBlackJack } from './menuBj';
+import { MenuBlackJack } from './MenuBj';
 import { CartaAlta } from './CartaAlta';
 import * as fs from 'fs'
 import { TragamonedasFruta } from './TragamonedasFruta';
@@ -20,6 +20,7 @@ export class MenuCasino {
     });
 
     this.casino1 = new Casino(1, "Casino Grupo16");
+    this.jugador = new Jugador("JugadorPorDefecto", 0);
   }
 
   //Metodos estaticos 

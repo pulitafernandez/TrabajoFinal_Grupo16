@@ -273,6 +273,4 @@ export class MenuBlackJack implements Apostable {
     console.log(`Jugador ${this.menu5.getnombreMcasino()}`);
     console.log(`Tus Creditos son de:${this.menu5.getcreditosMcasino()}\n`);
   }
-
-  // public  mostrarResultado(): void{}
 }

@@ -5,11 +5,10 @@ import { Apostable } from './InterfaceApuesta';
 export class TragamonedasFruta extends Tragamonedas implements Apostable {
     private carretes: string[][];
     private simbolos: string[];
-    private apuesta: number;
+    private apuesta = 0;
     menu2 = new MenuCasino();
 
     constructor() {
-        //constructor(nombre:string, apuestaMinima: number,  tematica:string) {
         super("TragamonedasClasico", "Frutas");
         this.simbolos = ["🍎", "🍊", "🍒", "🍇", "🍉"];  // Frutas representadas por emojis
         this.carretes = [
@@ -30,7 +29,6 @@ export class TragamonedasFruta extends Tragamonedas implements Apostable {
         this.menu2.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 1000 y la maxima es de 10000): ', (apuesta) => {
             const apuestaNumero = parseInt(apuesta);
             if (apuestaNumero >= 1000 && apuestaNumero <= 10000 && this.menu2.getcreditosMcasino() >= apuestaNumero) {
-                // if (this.menu5.getcreditosMcasino() >= apuestaNumero) {
                 this.apuesta = apuestaNumero;
                 this.menu2.setcreditosMcasino(this.menu2.getcreditosMcasino() - this.apuesta);
                 console.log(`---------------------------------------------------------------------- \n`);

@@ -4,7 +4,7 @@ import { Juego } from "./Juego";
 import { MenuCasino } from './MenuCasino';
 
 export class CartaAlta extends Juego implements Apostable {
-       private cartaActual: Carta;
+    private cartaActual: Carta;
     private apuesta1!: number;
 
     constructor() {
@@ -134,5 +134,4 @@ export class CartaAlta extends Juego implements Apostable {
             }
         });
     }
-
 }

@@ -13,5 +13,4 @@ export abstract class Tragamonedas extends Juego {
 
     //metodo abstracto
     public abstract mostrarResultado(): void;
-
 }

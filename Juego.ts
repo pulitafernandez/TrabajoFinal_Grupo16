@@ -7,5 +7,4 @@
     
     iniciarJuego(): void{ }
     mostrarResultado(): void { }
-
 }
