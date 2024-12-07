@@ -109,6 +109,7 @@ var TragamonedasFruta = /** @class */ (function (_super) {
         }
         return false; // Si no hay combinación ganadora
     };
+    TragamonedasFruta.prototype.cargarCredito = function () { };
     return TragamonedasFruta;
 }(Tragamonedas_1.Tragamonedas));
 exports.TragamonedasFruta = TragamonedasFruta;

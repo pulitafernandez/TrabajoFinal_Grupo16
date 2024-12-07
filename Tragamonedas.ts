@@ -1,5 +1,4 @@
 import { Juego } from "./Juego";
-import { Jugador } from "./Jugador";
 
 export abstract class Tragamonedas extends Juego {
     tematica: string;
@@ -8,14 +7,11 @@ export abstract class Tragamonedas extends Juego {
         super("Tragamonedas");
         this.tematica = tematica;
     }
-
     
     //metodo abstracto
-    abstract iniciarJuego(jugador1:Jugador, apuesta:number): void;
+    abstract iniciarJuego(): void;
 
     //metodo abstracto
     public abstract mostrarResultado(): void;
 
-   
 }
-

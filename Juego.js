@@ -5,7 +5,7 @@ var Juego = /** @class */ (function () {
     function Juego(nombre) {
         this.nombre = nombre;
     }
-    Juego.prototype.iniciarJuego = function (jugador1, apuesta) { };
+    Juego.prototype.iniciarJuego = function () { };
     Juego.prototype.mostrarResultado = function () { };
     return Juego;
 }());

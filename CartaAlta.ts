@@ -1,23 +1,20 @@
 import { Carta } from "./Carta";
 import { Apostable } from "./InterfaceApuesta";
 import { Juego } from "./Juego";
-import { Jugador } from "./Jugador";
 import { MenuCasino } from './MenuCasino';
 
 export class CartaAlta extends Juego implements Apostable {
-    private jugador: Jugador;
-    private cartaActual: Carta;
+       private cartaActual: Carta;
     private apuesta1!: number;
 
-     constructor(jugador: Jugador) {
+    constructor() {
         super("CartaAlta");
-        this.jugador = jugador;
         this.cartaActual = Carta.obtenerCartaAleatoria();
     }
-    
+
     menu4 = new MenuCasino();
 
-    public menu1() {
+    public menu1():void {
         console.log(`---------------------------------------------------------------------- \n`);
         this.actualizarSaldo();
         console.log(`=========================== \n`);
@@ -45,7 +42,7 @@ export class CartaAlta extends Juego implements Apostable {
         });
     }
 
-    public realizarApuesta() {
+    public realizarApuesta():void {
         this.apuesta1 = 0;
         console.log(`---------------------------------------------------------------------- \n`);
         this.menu4.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 1000 y la maxima es de 10000): ', (apuesta) => {
@@ -114,13 +111,13 @@ export class CartaAlta extends Juego implements Apostable {
     }
 
     //Actualiza el saldo del jugador
-    public actualizarSaldo(): void {
+    public actualizarSaldo():void {
         console.log(`Jugador ${this.menu4.getnombreMcasino()}`);
         console.log(`Tus Creditos son de:${this.menu4.getcreditosMcasino()}\n`);
     }
 
     // Cargar créditos al jugador
-    public cargarCredito(): void {
+    public cargarCredito():void {
         this.menu4.rl.question('Ingrese el monto a cargar: $', (monto: string) => {
             const montoValido = parseInt(monto);
             if (isNaN(montoValido) || montoValido <= 0) {
@@ -129,16 +126,13 @@ export class CartaAlta extends Juego implements Apostable {
                     this.menu1();
                 });
             } else {
-                this.jugador.cargarCreditos(montoValido);
                 this.menu4.setcreditosMcasino(this.menu4.getcreditosMcasino() + montoValido);
                 console.log(`Se han cargado $${montoValido}. Su nuevo saldo es: $${this.menu4.getcreditosMcasino()}.`);
                 this.menu4.rl.question('Presione Enter para continuar...', () => {
-                    this.menu1();
+                this.menu1();
                 });
             }
         });
     }
 
-    mostrarResultado(): void { }
-    cobrarPremio(): void { }
 }

@@ -1,6 +1,7 @@
 import { Juego } from './Juego';
 import { Jugador } from './Jugador';
 export class Casino {
+
     private idCasino: number;
     private nombre: string;
     private juegos: Juego[];
@@ -25,16 +26,12 @@ export class Casino {
         this.juegos.push(juego);
     }
 
-    public agregarJugador(nuevoJugador: Jugador) {
+    public agregarJugador(nuevoJugador: Jugador): void {
         if (nuevoJugador instanceof Jugador) {
             nuevoJugador.setIdJugador(Math.floor(Math.random() * (this.max - this.min + 1)) + this.min)
             this.jugadores.push(nuevoJugador)
         }
-
     }
 
-    public iniciarJuego(juego: Juego) {
-
-    }
-
+    public iniciarJuego(juego: Juego): void { }
 }

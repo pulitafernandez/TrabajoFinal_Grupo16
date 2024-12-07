@@ -20,7 +20,6 @@ export class MenuCasino {
     });
 
     this.casino1 = new Casino(1, "Casino Grupo16");
-    //this.jugador = new Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
   }
 
   //Metodos estaticos 
@@ -123,6 +122,7 @@ export class MenuCasino {
     });
   }
 
+
   //Menú de Seleccion de juegos
   public menuElejirJuegos(): void {
     console.log(`****************************`);
@@ -139,8 +139,8 @@ export class MenuCasino {
           console.clear();
           this.menutragamonedas();
           break;
-        case '2': 
-        console.clear();
+        case '2':
+          console.clear();
           this.menuBlackJack();
           break;
         case '3':
@@ -159,9 +159,8 @@ export class MenuCasino {
     });
   }
 
-
   //Menu Seleccion de Tragamonedas
-  private menutragamonedas() {
+  public menutragamonedas(): void {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
     console.log(`****************************` + '\n');
@@ -193,7 +192,7 @@ export class MenuCasino {
   }
 
   //Menu Tragamonedas Frutas
-  menutragamonedasFrutas() {
+  public menutragamonedasFrutas(): void {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
     console.log(`****************************` + '\n');
@@ -207,8 +206,8 @@ export class MenuCasino {
         case '1':
           console.clear();
           this.rl.close();
-        const menuFruta = new TragamonedasFruta();
-        menuFruta.realizarApuesta();
+          const menuFruta = new TragamonedasFruta();
+          menuFruta.realizarApuesta();
           break;
         case '2':
           console.clear();
@@ -226,7 +225,7 @@ export class MenuCasino {
     });
   }
   //Menu Tragamonedas Super Heroes
-  menuSuperheroe() {
+  public menuSuperheroe(): void {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
     console.log(`****************************` + '\n');
@@ -240,8 +239,8 @@ export class MenuCasino {
         case '1':
           console.clear();
           this.rl.close();
-         const menuTragamonedasSuper2 = new TragamonedasAvanzado();
-         menuTragamonedasSuper2.realizarApuesta();
+          const menuTragamonedasSuper2 = new TragamonedasAvanzado();
+          menuTragamonedasSuper2.realizarApuesta();
           break;
         case '2':
           console.clear();
@@ -259,10 +258,9 @@ export class MenuCasino {
       }
     });
   }
-    
 
   //Menu Black Jack
-  private menuBlackJack() {
+  public menuBlackJack(): void {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
     console.log(`****************************` + '\n');
@@ -294,9 +292,9 @@ export class MenuCasino {
       }
     });
   }
-  
+
   //Menu Carta Alta
-  menuCartaAlta() {
+  public menuCartaAlta(): void {
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
     console.log(`****************************` + '\n');
@@ -312,9 +310,9 @@ export class MenuCasino {
         case '1':
           console.clear();
           this.rl.close();
-        const cartaAlta = new CartaAlta(this.jugador);
-        cartaAlta.menu1();
-        break;
+          const cartaAlta = new CartaAlta();
+          cartaAlta.menu1();
+          break;
         case '2':
           console.clear();
           this.mostrarReglasCartaAlta();
@@ -332,7 +330,7 @@ export class MenuCasino {
   }
 
   // Consultar el saldo de créditos
-  private consultarSaldo(): void {
+  public consultarSaldo(): void {
     this.jugador.setCreditos(MenuCasino.creditosMcasino);
     const creditos = this.jugador.consultarCreditos();
     if (creditos !== undefined) {
@@ -343,9 +341,8 @@ export class MenuCasino {
     });
   }
 
-
   // Cargar créditos al jugador
-  private cargarCreditos(): void {
+  public cargarCreditos(): void {
     this.rl.question('Ingrese el monto a cargar: $', (monto: string) => {
       const montoValido = parseInt(monto);
       if (isNaN(montoValido) || montoValido <= 0) {
@@ -354,7 +351,7 @@ export class MenuCasino {
           this.mostrarMenuPrincipal();
         });
       } else {
-        this.jugador.cargarCreditos(montoValido);
+        this.jugador.setCreditos(this.jugador.consultarCreditos() + montoValido);
         MenuCasino.creditosMcasino = this.jugador.consultarCreditos();
         console.log(`Se han cargado $${montoValido}. Su nuevo saldo es: $${this.jugador.consultarCreditos()}.`);
         this.rl.question('Presione Enter para continuar...', () => {
@@ -365,7 +362,7 @@ export class MenuCasino {
   }
 
   //Menues de Reglas de Juegos
-  public mostrarReglasFrutas() {
+  public mostrarReglasFrutas(): void {
     fs.readFile('./Reglas/Reglas-TragamonedasFrutas.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
       if (err) {
         console.error('Error al leer las reglas:', err);
@@ -376,7 +373,7 @@ export class MenuCasino {
     });
   }
 
-  public mostrarReglasSuperheroes() {
+  public mostrarReglasSuperheroes(): void {
     fs.readFile('./Reglas/Reglas-TragamonedasSuperheroes.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
       if (err) {
         console.error('Error al leer las reglas:', err);
@@ -387,7 +384,7 @@ export class MenuCasino {
     });
   }
 
-  public mostrarReglasBlackjack() {
+  public mostrarReglasBlackjack(): void {
     const fs = require('fs');
     fs.readFile('./Reglas/Reglas-Blackjack.txt', 'utf8', (err: NodeJS.ErrnoException | null, data: string) => {
       if (err) {

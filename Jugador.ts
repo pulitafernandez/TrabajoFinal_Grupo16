@@ -11,21 +11,8 @@ export class Jugador {
         this.idJugador = (Math.floor(Math.random() * (this.max - this.min + 1)) + this.min);
     }
 
-    
-    // Getters y setters
-    getIdJugador(): number {
-        return this.idJugador;
-    }
-
-    getNombre(): string {
-        return this.nombre;
-    }
-
-    setNombre(nuevoNombre: string): void {
-        this.nombre = nuevoNombre;
-    }
-
-    cargarCreditos(monto: number): void {
+        // Manejo Creditos
+    public cargarCreditos(monto: number): void {
         this.creditos += monto;
         console.log(`Su crédito actual es: $${this.creditos}`);
     }
@@ -34,11 +21,23 @@ export class Jugador {
         this.creditos = nuevoCreditos;
     }
 
-    consultarCreditos(): number {
+    public consultarCreditos(): number {
         return this.creditos;
     }
 
-    setIdJugador(nuevoidJugador: number): void {
+   //Getters y setters
+
+    public getNombre(): string {
+        return this.nombre;
+    }
+
+    public setNombre(nuevoNombre: string): void {
+        this.nombre = nuevoNombre;
+    }
+    public getIdJugador(): number {
+        return this.idJugador;
+    }
+    public setIdJugador(nuevoidJugador: number): void {
         this.idJugador = nuevoidJugador;
     }
 }

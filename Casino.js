@@ -26,8 +26,7 @@ var Casino = /** @class */ (function () {
             this.jugadores.push(nuevoJugador);
         }
     };
-    Casino.prototype.iniciarJuego = function (juego) {
-    };
+    Casino.prototype.iniciarJuego = function (juego) { };
     return Casino;
 }());
 exports.Casino = Casino;

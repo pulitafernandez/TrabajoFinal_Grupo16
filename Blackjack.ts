@@ -12,20 +12,20 @@ export class BlackJack extends Juego {
     this.banca = []
   }
 
-  limpiarArrays(): void {
+  public limpiarArrays(): void {
     this.jugador.splice(0);
     this.banca.splice(0);
   }
 
-  public mostrarCartaJug() {
+  public mostrarCartaJug(): void  {
     console.log(this.jugador.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
   }
 
-  public mostarCartaBanca() {
+  public mostarCartaBanca(): void {
     console.log(this.banca.map((carta1) => `Carta: ${carta1.getValor()} ${carta1.getPalo()}`).join('\n'));
   }
 
-  obtenerSumaJugador(): number {
+  public obtenerSumaJugador(): number {
     let suma = 0;
     for (const carta of this.jugador) {
       suma += carta.getValorNumerico();
@@ -33,7 +33,7 @@ export class BlackJack extends Juego {
     return suma;
   }
 
-  obtenerSumaBanca(): number {
+  public obtenerSumaBanca(): number {
     let suma = 0;
     for (const carta of this.banca) {
       suma += carta.getValorNumerico();
@@ -41,12 +41,11 @@ export class BlackJack extends Juego {
     return suma;
   }
 
-  pedirCartaJugador() {
+  public pedirCartaJugador(): void {
     this.jugador.push(Carta.obtenerCartaAleatoria());
   }
 
-  pedirCartaBanca() {
+  public pedirCartaBanca(): void {
     this.banca.push(Carta.obtenerCartaAleatoria());
   }
-
 }

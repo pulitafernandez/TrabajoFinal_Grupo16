@@ -16,7 +16,6 @@ var MenuCasino = /** @class */ (function () {
             output: process.stdout,
         });
         this.casino1 = new Casino_1.Casino(1, "Casino Grupo16");
-        //this.jugador = new Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
     }
     MenuCasino.prototype.getcreditosMcasino = function () {
         return MenuCasino.creditosMcasino;
@@ -300,7 +299,7 @@ var MenuCasino = /** @class */ (function () {
                 case '1':
                     console.clear();
                     _this.rl.close();
-                    var cartaAlta = new CartaAlta_1.CartaAlta(_this.jugador);
+                    var cartaAlta = new CartaAlta_1.CartaAlta();
                     cartaAlta.menu1();
                     break;
                 case '2':
@@ -342,7 +341,7 @@ var MenuCasino = /** @class */ (function () {
                 });
             }
             else {
-                _this.jugador.cargarCreditos(montoValido);
+                _this.jugador.setCreditos(_this.jugador.consultarCreditos() + montoValido);
                 MenuCasino.creditosMcasino = _this.jugador.consultarCreditos();
                 console.log("Se han cargado $".concat(montoValido, ". Su nuevo saldo es: $").concat(_this.jugador.consultarCreditos(), "."));
                 _this.rl.question('Presione Enter para continuar...', function () {

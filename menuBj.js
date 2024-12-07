@@ -5,11 +5,9 @@ var Blackjack_1 = require("./Blackjack");
 var MenuCasino_1 = require("./MenuCasino");
 var MenuBlackJack = /** @class */ (function () {
     function MenuBlackJack() {
-        //jugadorPipe = new Jugador("Pipe",1000);
         this.menu5 = new MenuCasino_1.MenuCasino();
         this.blackjack1 = new Blackjack_1.BlackJack();
     }
-    //blackjack1 = new BlackJack(1000,this.menu5.get);
     MenuBlackJack.prototype.menu1 = function () {
         var _this = this;
         console.log("---------------------------------------------------------------------- \n");
@@ -78,7 +76,6 @@ var MenuBlackJack = /** @class */ (function () {
         console.log("2. Quedarse\n");
         console.log("---------------------------------------------------------------------- \n");
         this.menu5.rl.question('Ingrese su opción: ', function (opcion1) {
-            //this.rl.question('Ingrese su opción: ', (opcion1) => {
             switch (opcion1) {
                 case '1':
                     console.clear();
@@ -105,7 +102,6 @@ var MenuBlackJack = /** @class */ (function () {
         this.menu5.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 1000 y la maxima es de 10000): ', function (apuesta) {
             var apuestaNumero = parseInt(apuesta);
             if (apuestaNumero >= 1000 && apuestaNumero <= 10000 && _this.menu5.getcreditosMcasino() >= apuestaNumero) {
-                // if (this.menu5.getcreditosMcasino() >= apuestaNumero) {
                 _this.apuesta = apuestaNumero;
                 _this.menu5.setcreditosMcasino(_this.menu5.getcreditosMcasino() - _this.apuesta);
                 console.log("---------------------------------------------------------------------- \n");
@@ -113,11 +109,10 @@ var MenuBlackJack = /** @class */ (function () {
                 console.log("Tus Creditos son : ".concat(_this.menu5.getcreditosMcasino()));
                 console.log("---------------------------------------------------------------------- \n");
                 _this.repartir();
-                //}
             }
             else {
-                console.log("---------------------------------------------------------------------- \n");
-                console.log("Su apuesta no esta entre los parametros requeridos");
+                console.log("---------------------------------------------------------------------- ");
+                console.log("Su apuesta no esta entre los parametros requeridos\n");
                 _this.apuesta = 0;
                 _this.menujuego();
             }
@@ -125,7 +120,7 @@ var MenuBlackJack = /** @class */ (function () {
     };
     MenuBlackJack.prototype.repartir = function () {
         this.blackjack1.limpiarArrays();
-        console.log("---------------------------------------------------------------------- \n");
+        console.log("---------------------------------------------------------------------- ");
         console.log("Inicia la Partida");
         console.log("Tu apuesta es de ".concat(this.apuesta, "\n"));
         this.blackjack1.pedirCartaJugador();
@@ -145,8 +140,7 @@ var MenuBlackJack = /** @class */ (function () {
     MenuBlackJack.prototype.chequearBJ = function () {
         if (this.blackjack1.obtenerSumaJugador() == 21) {
             //chequearBJ igual a 21 tienes BJ
-            console.log("---------------------------------------------------------------------- \n");
-            //console.log(`chequearBJ igual a 21 tienes BJ`);
+            console.log("---------------------------------------------------------------------- ");
             console.log("Tienes Black Jack");
             console.log("Total jugador: ".concat(this.blackjack1.obtenerSumaJugador()));
             console.log("---------------------------------------------------------------------- \n");
@@ -160,7 +154,6 @@ var MenuBlackJack = /** @class */ (function () {
             if (this.sumaBanca == this.sumaJugador) {
                 //chequearBj igual que 21 empatas
                 console.log("---------------------------------------------------------------------- \n");
-                //console.log(`chequearBj igual que 21 empatas`);
                 console.log("Ambos tiene Black Jack Empate");
                 this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + this.apuesta);
                 this.menujuego();
@@ -168,20 +161,17 @@ var MenuBlackJack = /** @class */ (function () {
             else {
                 //chequearBJ la banca no tiene 21 ganas
                 console.log("---------------------------------------------------------------------- \n");
-                //console.log(`chequearBJ la banca no tiene 21 ganas`);
                 console.log("total banca ".concat(this.blackjack1.obtenerSumaBanca(), "\n                     no consiguio empatar el BlackJack la banca Pierde.\n                     Ganaste ").concat((this.apuesta * 2.5)));
                 console.log("---------------------------------------------------------------------- \n");
                 this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + (this.apuesta * 2.5));
-                //this.creditos = this.creditos + (this.apuesta * 2.5);
                 this.menujuego();
             }
         }
         else {
             //chequearBJ no tienes 21BJ
             console.log("---------------------------------------------------------------------- \n");
-            //console.log(`chequearBJ no tienes 21BJ`);
             console.log("No hay blackjack");
-            console.log("---------------------------------------------------------------------- \n");
+            console.log("---------------------------------------------------------------------- ");
             this.menujuego1();
         }
     };
@@ -189,7 +179,6 @@ var MenuBlackJack = /** @class */ (function () {
         if (this.sumaJugador < 21) {
             //chequear jugada menor que 21 volver a preguntar
             console.log("---------------------------------------------------------------------- \n");
-            //console.log(`chequear jugada menor que 21 volver a preguntar`);
             console.log("Total jugador: ".concat(this.sumaJugador));
             console.log("---------------------------------------------------------------------- \n");
             this.menujuego1();
@@ -197,7 +186,6 @@ var MenuBlackJack = /** @class */ (function () {
         else if (this.sumaJugador > 21) {
             //chequear jugada mayor que 21 perdiste
             console.log("---------------------------------------------------------------------- \n");
-            //console.log(`chequear jugada mayor que 21 perdiste`);
             console.log("Total jugador: ".concat(this.sumaJugador));
             console.log("Perdiste");
             console.log("---------------------------------------------------------------------- \n");
@@ -206,11 +194,8 @@ var MenuBlackJack = /** @class */ (function () {
         else if (this.sumaJugador === 21) {
             //chequear jugada igual a que 21 ganas
             console.log("---------------------------------------------------------------------- \n");
-            //console.log(`chequear jugada igual a que 21 ganas`);
             console.log("\u00A1Felicidades! Obtuviste 21.");
             console.log("---------------------------------------------------------------------- \n");
-            //this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + (this.apuesta * 2));
-            //this.creditos = this.creditos + (this.apuesta * 2);
             this.menujuego1();
         }
     };
@@ -238,7 +223,6 @@ var MenuBlackJack = /** @class */ (function () {
                 console.log("Empate. Nadie gana");
                 console.log("---------------------------------------------------------------------- \n");
                 this.menu5.setcreditosMcasino(this.menu5.getcreditosMcasino() + this.apuesta);
-                // this.creditos = this.creditos + this.apuesta;
                 this.menu1();
                 break;
             case this.sumaBanca > this.sumaJugador && this.sumaBanca <= 21:
@@ -278,8 +262,6 @@ var MenuBlackJack = /** @class */ (function () {
         console.log("Jugador ".concat(this.menu5.getnombreMcasino()));
         console.log("Tus Creditos son de:".concat(this.menu5.getcreditosMcasino(), "\n"));
     };
-    MenuBlackJack.prototype.cobrarPremio = function () { };
-    MenuBlackJack.prototype.mostrarResultado = function () { };
     return MenuBlackJack;
 }());
 exports.MenuBlackJack = MenuBlackJack;

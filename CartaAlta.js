@@ -21,10 +21,9 @@ var Juego_1 = require("./Juego");
 var MenuCasino_1 = require("./MenuCasino");
 var CartaAlta = /** @class */ (function (_super) {
     __extends(CartaAlta, _super);
-    function CartaAlta(jugador) {
+    function CartaAlta() {
         var _this = _super.call(this, "CartaAlta") || this;
         _this.menu4 = new MenuCasino_1.MenuCasino();
-        _this.jugador = jugador;
         _this.cartaActual = Carta_1.Carta.obtenerCartaAleatoria();
         return _this;
     }
@@ -141,7 +140,6 @@ var CartaAlta = /** @class */ (function (_super) {
                 });
             }
             else {
-                _this.jugador.cargarCreditos(montoValido);
                 _this.menu4.setcreditosMcasino(_this.menu4.getcreditosMcasino() + montoValido);
                 console.log("Se han cargado $".concat(montoValido, ". Su nuevo saldo es: $").concat(_this.menu4.getcreditosMcasino(), "."));
                 _this.menu4.rl.question('Presione Enter para continuar...', function () {
@@ -150,8 +148,6 @@ var CartaAlta = /** @class */ (function (_super) {
             }
         });
     };
-    CartaAlta.prototype.mostrarResultado = function () { };
-    CartaAlta.prototype.cobrarPremio = function () { };
     return CartaAlta;
 }(Juego_1.Juego));
 exports.CartaAlta = CartaAlta;

@@ -10,16 +10,7 @@ var Jugador = /** @class */ (function () {
         this.creditos = creditos;
         this.idJugador = (Math.floor(Math.random() * (this.max - this.min + 1)) + this.min);
     }
-    // Getters y setters
-    Jugador.prototype.getIdJugador = function () {
-        return this.idJugador;
-    };
-    Jugador.prototype.getNombre = function () {
-        return this.nombre;
-    };
-    Jugador.prototype.setNombre = function (nuevoNombre) {
-        this.nombre = nuevoNombre;
-    };
+    // Manejo Creditos
     Jugador.prototype.cargarCreditos = function (monto) {
         this.creditos += monto;
         console.log("Su cr\u00E9dito actual es: $".concat(this.creditos));
@@ -29,6 +20,16 @@ var Jugador = /** @class */ (function () {
     };
     Jugador.prototype.consultarCreditos = function () {
         return this.creditos;
+    };
+    //Getters y setters
+    Jugador.prototype.getNombre = function () {
+        return this.nombre;
+    };
+    Jugador.prototype.setNombre = function (nuevoNombre) {
+        this.nombre = nuevoNombre;
+    };
+    Jugador.prototype.getIdJugador = function () {
+        return this.idJugador;
     };
     Jugador.prototype.setIdJugador = function (nuevoidJugador) {
         this.idJugador = nuevoidJugador;

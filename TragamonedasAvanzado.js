@@ -109,6 +109,7 @@ var TragamonedasAvanzado = /** @class */ (function (_super) {
         }
         return false; // Si no hay combinación ganadora
     };
+    TragamonedasAvanzado.prototype.cargarCredito = function () { };
     return TragamonedasAvanzado;
 }(Tragamonedas_1.Tragamonedas));
 exports.TragamonedasAvanzado = TragamonedasAvanzado;
