@@ -2,7 +2,6 @@ import * as readline from 'readline';
 import { Jugador } from './Jugador';
 import { Casino } from './Casino';
 import { MenuBlackJack } from './menuBj';
-import { MenuTragamonedas } from './MenuTragamonedas';
 import { CartaAlta } from './CartaAlta';
 import * as fs from 'fs'
 import { TragamonedasFruta } from './TragamonedasFruta';
@@ -20,8 +19,8 @@ export class MenuCasino {
       output: process.stdout,
     });
 
-    this.casino1 = new Casino(1, "Casino Pepe");
-    this.jugador = new Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
+    this.casino1 = new Casino(1, "Casino Grupo16");
+    //this.jugador = new Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
   }
 
   //Metodos estaticos 
@@ -161,8 +160,6 @@ export class MenuCasino {
   }
 
 
-
-
   //Menu Seleccion de Tragamonedas
   private menutragamonedas() {
     console.log(`****************************`);
@@ -210,8 +207,8 @@ export class MenuCasino {
         case '1':
           console.clear();
           this.rl.close();
-          const menuTragamonedasSuper1 = new MenuTragamonedas();
-          menuTragamonedasSuper1.menuTragamonedasFruta();
+        const menuFruta = new TragamonedasFruta();
+        menuFruta.realizarApuesta();
           break;
         case '2':
           console.clear();
@@ -243,8 +240,8 @@ export class MenuCasino {
         case '1':
           console.clear();
           this.rl.close();
-          const menuTragamonedasSuper2 = new MenuTragamonedas();
-          menuTragamonedasSuper2.menuTragamonedasSuper();
+         const menuTragamonedasSuper2 = new TragamonedasAvanzado();
+         menuTragamonedasSuper2.realizarApuesta();
           break;
         case '2':
           console.clear();
@@ -297,9 +294,9 @@ export class MenuCasino {
       }
     });
   }
+  
   //Menu Carta Alta
   menuCartaAlta() {
-   
     console.log(`****************************`);
     console.log(`*Jugador: ${MenuCasino.nombreMcasino} Creditos: ${MenuCasino.creditosMcasino}*`);
     console.log(`****************************` + '\n');

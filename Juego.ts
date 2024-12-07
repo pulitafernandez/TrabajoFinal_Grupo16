@@ -1,5 +1,4 @@
-
-
+import { Jugador } from "./Jugador";
 export abstract class Juego {
     public nombre: string;
 
@@ -7,10 +6,9 @@ export abstract class Juego {
         this.nombre = nombre;
 
     }
-    iniciarJuego() { }
-   
-    mostrarResultado(): void { }
+    
+    iniciarJuego(jugador1:Jugador, apuesta:number): void{ }
+     mostrarResultado(): void { }
 
-    resultado(): void {}
-
+  
 }

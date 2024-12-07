@@ -9,14 +9,14 @@ export class CartaAlta extends Juego implements Apostable {
     private cartaActual: Carta;
     private apuesta1!: number;
 
- 
-    constructor(jugador: Jugador) {
+     constructor(jugador: Jugador) {
         super("CartaAlta");
         this.jugador = jugador;
         this.cartaActual = Carta.obtenerCartaAleatoria();
     }
     
     menu4 = new MenuCasino();
+
     public menu1() {
         console.log(`---------------------------------------------------------------------- \n`);
         this.actualizarSaldo();

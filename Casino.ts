@@ -8,14 +8,13 @@ export class Casino {
     private min = 0;
     private max = 1000;
 
-
     constructor(idCasino: number, nombre: string) {
         this.idCasino = idCasino;
         this.nombre = nombre;
         this.juegos = [];
         this.jugadores = []
-
     }
+
     public getNombre(): string {
         return this.nombre;
     }
@@ -38,14 +37,4 @@ export class Casino {
 
     }
 
-    // public asignarIdJugador(jugadorAsig: Jugador) {
-    //     const indiceDuplicado = this.jugador.findIndex((jug) => jug.getIdJugador() === jugadorAsig.getIdVeterinaria());
-    //     if (indiceDuplicado !== -1) {
-    //         let nuevoId = 1;
-    //         while (this.jugador.some((jug) => jug.getIdJugador() === nuevoId)) {
-    //             nuevoId++;
-    //         }
-    //         jugadorAsig.setIdJugador(nuevoId);
-    //     }
-    // }
 }

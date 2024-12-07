@@ -19,15 +19,11 @@ exports.Tragamonedas = void 0;
 var Juego_1 = require("./Juego");
 var Tragamonedas = /** @class */ (function (_super) {
     __extends(Tragamonedas, _super);
-    function Tragamonedas(nombre, apuestaMinima, tematica) {
+    function Tragamonedas(nombre, tematica) {
         var _this = _super.call(this, "Tragamonedas") || this;
         _this.tematica = tematica;
         return _this;
     }
-    Tragamonedas.prototype.resultado = function () {
-        // Código para calcular el resultado
-        return 'Resultado';
-    };
     return Tragamonedas;
 }(Juego_1.Juego));
 exports.Tragamonedas = Tragamonedas;

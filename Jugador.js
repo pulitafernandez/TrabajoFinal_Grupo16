@@ -4,8 +4,11 @@ exports.Jugador = void 0;
 var Jugador = /** @class */ (function () {
     function Jugador(nombre, creditos) {
         this.idJugador = 0;
+        this.min = 0;
+        this.max = 1000;
         this.nombre = nombre;
         this.creditos = creditos;
+        this.idJugador = (Math.floor(Math.random() * (this.max - this.min + 1)) + this.min);
     }
     // Getters y setters
     Jugador.prototype.getIdJugador = function () {

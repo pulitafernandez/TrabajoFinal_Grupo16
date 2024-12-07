@@ -5,17 +5,18 @@ var readline = require("readline");
 var Jugador_1 = require("./Jugador");
 var Casino_1 = require("./Casino");
 var menuBj_1 = require("./menuBj");
-var MenuTragamonedas_1 = require("./MenuTragamonedas");
 var CartaAlta_1 = require("./CartaAlta");
 var fs = require("fs");
+var TragamonedasFruta_1 = require("./TragamonedasFruta");
+var TragamonedasAvanzado_1 = require("./TragamonedasAvanzado");
 var MenuCasino = /** @class */ (function () {
     function MenuCasino() {
         this.rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout,
         });
-        this.casino1 = new Casino_1.Casino(1, "Casino Pepe");
-        this.jugador = new Jugador_1.Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
+        this.casino1 = new Casino_1.Casino(1, "Casino Grupo16");
+        //this.jugador = new Jugador("JugadorPorDefecto", 0); // Inicializar con un jugador por defecto
     }
     MenuCasino.prototype.getcreditosMcasino = function () {
         return MenuCasino.creditosMcasino;
@@ -194,8 +195,8 @@ var MenuCasino = /** @class */ (function () {
                 case '1':
                     console.clear();
                     _this.rl.close();
-                    var menuTragamonedasSuper1 = new MenuTragamonedas_1.MenuTragamonedas();
-                    menuTragamonedasSuper1.menuTragamonedasFruta();
+                    var menuFruta = new TragamonedasFruta_1.TragamonedasFruta();
+                    menuFruta.realizarApuesta();
                     break;
                 case '2':
                     console.clear();
@@ -228,8 +229,8 @@ var MenuCasino = /** @class */ (function () {
                 case '1':
                     console.clear();
                     _this.rl.close();
-                    var menuTragamonedasSuper2 = new MenuTragamonedas_1.MenuTragamonedas();
-                    menuTragamonedasSuper2.menuTragamonedasSuper();
+                    var menuTragamonedasSuper2 = new TragamonedasAvanzado_1.TragamonedasAvanzado();
+                    menuTragamonedasSuper2.realizarApuesta();
                     break;
                 case '2':
                     console.clear();

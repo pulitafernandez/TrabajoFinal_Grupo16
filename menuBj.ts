@@ -223,7 +223,6 @@ export class MenuBlackJack implements Apostable{
     }
   }
 
-
   public juegaConsola() {
     console.log(`---------------------------------------------------------------------- \n`);
     console.log(`Tienes ${this.blackjack1.obtenerSumaJugador()}.\n`);

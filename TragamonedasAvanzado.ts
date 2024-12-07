@@ -1,24 +1,56 @@
+import { Jugador } from "./Jugador";
 import { Tragamonedas } from "./Tragamonedas";
-
+import { MenuCasino } from "./MenuCasino";
 export class TragamonedasAvanzado extends Tragamonedas {
 
     private carretes: string[][];    // Los carretes, cada uno puede tener varios símbolos
     private simbolos: string[];      // Los símbolos disponibles para los carretes (superhéroes)
     private carretesCount: number;   // Cantidad de carretes
     private filasCount: number;
-
-    constructor(apuestaMinima: number) {
-        super("Tragamonedas Avanzado", apuestaMinima, "Superheroes");
+    private apuesta:number;
+    constructor() {
+        super("Tragamonedas Avanzado", "Superheroes");
         this.simbolos = ["🦸‍♂️", "🦸‍♀️", "💥", "⚡", "🛡️", "🦸‍♂️🦹‍♂️"]; // Ejemplo de superhéroes, poderes y comodines
         this.carretesCount = 5;   // Supongamos que hay 5 carretes
         this.filasCount = 3;      // Y cada carrete tiene 3 filas
         this.carretes = Array.from({ length: this.carretesCount }, () => []); // Inicializamos el array de carretes
     }
+
+    menu1 = new MenuCasino();
+
+    actualizarSaldo(): void{
+        console.log(`Jugador ${this.menu1.getnombreMcasino()}`);
+        console.log(`Tus Creditos son de:${this.menu1.getcreditosMcasino()}\n`);
+      }
+    public realizarApuesta() {
+        this.actualizarSaldo();
+        this.apuesta = 0;
+        console.log(`---------------------------------------------------------------------- \n`);
+        this.menu1.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 1000 y la maxima es de 10000): ', (apuesta) => {
+          const apuestaNumero = parseInt(apuesta);
+          if (apuestaNumero >= 1000 && apuestaNumero <= 10000 && this.menu1.getcreditosMcasino() >= apuestaNumero) {
+           // if (this.menu5.getcreditosMcasino() >= apuestaNumero) {
+              this.apuesta = apuestaNumero;
+              this.menu1.setcreditosMcasino(this.menu1.getcreditosMcasino() - this.apuesta);
+              console.log(`---------------------------------------------------------------------- \n`);
+              console.log(`Su apuesta es de ${this.apuesta}`);
+              console.log(`Tus Creditos son : ${this.menu1.getcreditosMcasino()}`);
+              console.log(`---------------------------------------------------------------------- \n`);
+             this.iniciarJuego();
+            }
+          else {
+            console.log(`---------------------------------------------------------------------- \n`);
+            console.log(`Su apuesta no esta entre los parametros requeridos`);
+            this.apuesta = 0;
+            this.menu1.mostrarReglasSuperheroes();
+          }
+        });
+      }
+
+
     // Implementación de iniciarJuego para TragamonedasAvanzado
     iniciarJuego(): void {
-        console.log("Girando los carretes de Tragamonedas Avanzado...");
         console.log("Girando los carretes de Tragamonedas Avanzado: Superhéroes...");
-
         // Llenamos cada carrete con una combinación aleatoria de símbolos
         for (let i = 0; i < this.carretes.length; i++) {
             this.carretes[i] = [];
@@ -26,18 +58,22 @@ export class TragamonedasAvanzado extends Tragamonedas {
                 const simboloAleatorio = this.simbolos[Math.floor(Math.random() * this.simbolos.length)];
                 this.carretes[i].push(simboloAleatorio);
             }
-
             // Mostrar los resultados de los carretes
-            this.mostrarResultado();
+        }
+           // this.mostrarResultado();
             // Evaluar si el jugador ha ganado
             const resultadoGanador = this.evaluarGanador();
             if (resultadoGanador) {
                 console.log("¡Has ganado! Felicitaciones, tu superhéroe ha salvado el día.");
+                this.menu1.setcreditosMcasino(this.menu1.getcreditosMcasino() + (this.apuesta * 3));
+                this.menu1.menuSuperheroe();
             } else {
                 console.log("No has ganado esta vez. ¡Sigue luchando!");
+                this.menu1.menuSuperheroe();
             }
-        }
+        
     }
+
 
     //implemento el metodo generarResultado
      mostrarResultado(): void {
@@ -59,7 +95,7 @@ export class TragamonedasAvanzado extends Tragamonedas {
                 return true;  // Si todos los símbolos en la fila son iguales, hay una ganancia
             }
         }
-
         return false; // Si no hay combinación ganadora
     }
+
 }

@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TragamonedasFruta = void 0;
+var MenuCasino_1 = require("./MenuCasino");
 var Tragamonedas_1 = require("./Tragamonedas");
 var TragamonedasFruta = /** @class */ (function (_super) {
     __extends(TragamonedasFruta, _super);
-    function TragamonedasFruta(apuestaMinima) {
+    function TragamonedasFruta() {
         //constructor(nombre:string, apuestaMinima: number,  tematica:string) {
-        var _this = _super.call(this, "TragamonedasClasico", apuestaMinima, "Frutas") || this;
+        var _this = _super.call(this, "TragamonedasClasico", "Frutas") || this;
+        _this.menu2 = new MenuCasino_1.MenuCasino();
         _this.simbolos = ["🍎", "🍊", "🍒", "🍇", "🍉"]; // Frutas representadas por emojis
         _this.carretes = [
             [], [], [] // Tres carretes vacíos (un carrete por fila)
@@ -29,7 +31,37 @@ var TragamonedasFruta = /** @class */ (function (_super) {
         return _this;
     }
     // Implementación de iniciarJuego para TragamonedasFrutas
+    TragamonedasFruta.prototype.actualizarSaldo = function () {
+        console.log("Jugador ".concat(this.menu2.getnombreMcasino()));
+        console.log("Tus Creditos son de:".concat(this.menu2.getcreditosMcasino(), "\n"));
+    };
+    TragamonedasFruta.prototype.realizarApuesta = function () {
+        var _this = this;
+        this.actualizarSaldo();
+        this.apuesta = 0;
+        console.log("---------------------------------------------------------------------- \n");
+        this.menu2.rl.question('Ingrese Su apuesta (Recuerde la apuesta minima es de 1000 y la maxima es de 10000): ', function (apuesta) {
+            var apuestaNumero = parseInt(apuesta);
+            if (apuestaNumero >= 1000 && apuestaNumero <= 10000 && _this.menu2.getcreditosMcasino() >= apuestaNumero) {
+                // if (this.menu5.getcreditosMcasino() >= apuestaNumero) {
+                _this.apuesta = apuestaNumero;
+                _this.menu2.setcreditosMcasino(_this.menu2.getcreditosMcasino() - _this.apuesta);
+                console.log("---------------------------------------------------------------------- \n");
+                console.log("Su apuesta es de ".concat(_this.apuesta));
+                console.log("Tus Creditos son : ".concat(_this.menu2.getcreditosMcasino()));
+                console.log("---------------------------------------------------------------------- \n");
+                _this.iniciarJuego();
+            }
+            else {
+                console.log("---------------------------------------------------------------------- \n");
+                console.log("Su apuesta no esta entre los parametros requeridos");
+                _this.apuesta = 0;
+                _this.menu2.menutragamonedasFrutas();
+            }
+        });
+    };
     TragamonedasFruta.prototype.iniciarJuego = function () {
+        this.actualizarSaldo();
         console.log("Girando los carretes de Tragamonedas Frutas...");
         // Llenar cada carrete con una combinación aleatoria de frutas
         for (var i = 0; i < this.carretes.length; i++) {
@@ -45,9 +77,12 @@ var TragamonedasFruta = /** @class */ (function (_super) {
         var resultadoGanador = this.evaluarGanador();
         if (resultadoGanador) {
             console.log("¡Has ganado!");
+            this.menu2.setcreditosMcasino(this.menu2.getcreditosMcasino() + (this.apuesta * 3));
+            this.menu2.menutragamonedasFrutas();
         }
         else {
             console.log("No has ganado esta vez. ¡Sigue intentándolo!");
+            this.menu2.menutragamonedasFrutas();
         }
     };
     //implemento el metodo generarResultado
